@@ -1,33 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import MobilePatern from "../components/MobilePatern"
+import LaptopPatern from "../components/LaptopPatern"
+import OtherPatern from "../components/OtherPattern"
+
 
 const AddProduct = (props)=>{
-
-
+        const [addPatern, setAddPatern] = useState(<MobilePatern/>)
+        
+       useEffect(() => {
+           
+           return () => {
+               //cleanup
+           }
+       }, [addPatern])
     return (
         <>
             <div className='add-product'>
-                <form action = "/products/add" method = "POST">
-                    <div><span>Product Name : </span> <input type="text" name="productName" /></div>
-                    <div><span>Manufacturer : </span> <input type="text" name="manufacturer" /></div>
+                <form action = "/add" method = "POST">
                     <div>
                         <span>Category : </span>
                         <select className="cat-options" name="category">
-                            <option>mobile</option>
-                            <option>laptops</option>
-                            <option>pc hardware</option>
-                            <option>Home deviced</option>
-                            <option>other</option>
+                            <option onClickCapture={()=>{setAddPatern(<MobilePatern/>)}} >mobile</option>
+                            <option onClickCapture={()=>{setAddPatern(<LaptopPatern/>)}}>laptops</option>
+                            <option onClickCapture={()=>{setAddPatern(<OtherPatern/>)} }>pc hardware</option>
+                            <option onClickCapture={()=>{setAddPatern(<OtherPatern/>)} }>Home devices</option>
+                            <option onClickCapture={()=>{setAddPatern(<OtherPatern/>)} }>other</option>
                         </select>
                     </div>
-                    <div><span>Amount : </span><input type="text" name="amount" /></div>
-                    <div><span>Price : </span><input type="text" name="price" /></div>
-                    <div><span>Specifications : </span><textarea type="textArea" name="specifications" /></div>
-                    <div><button className="add-btn">Add Product</button></div>
-                    
+                    {addPatern}
                 </form>
             </div>
         </>
+        
     )
+    
 }
+
 
 export default AddProduct;

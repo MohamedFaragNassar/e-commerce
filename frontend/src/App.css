@@ -1,3 +1,6 @@
+@import './stylesheets/manage.css';
+
+
 *{
     margin: 0;
     padding: 0;
@@ -16,6 +19,9 @@ ul{
 .container{
     width: 80%;
     margin: auto;
+}
+button{
+    cursor: pointer;
 }
 
 
@@ -95,6 +101,7 @@ ul{
     background: #f3f3f3;
     margin-right: 10px;
     background: transparent;
+    padding: 10px 20px;
 }
 
 .nav-user-menu{
@@ -105,16 +112,47 @@ ul{
     background: #d3d3d3;
     position: absolute;
     padding: 10px;
-    top: 70px;
+    top: 60px;
     right: 0px;
+    border-radius:15px;
+}
+.show{
+    display: block;
 }
 
+.nav-user-menu ul li{
+    padding: 10px;
+}
+.nav-user-menu ul li:hover{
+    background: #f3f3f3;
+}
+
+/*
 .nav-user-menu::before{
     content: "";
     padding: 10px 20px;
     background: #333;
+    transform: rotate();
+}
+*/
+.cat{
+    position: relative;
 }
 
+.cat:hover .items-container{
+    display: block;
+}
+.items-container{
+    display: none;
+}
+ .cat-items{
+     width: 200px;
+     display: flex;
+     flex-direction: column;
+     position: absolute;
+     top: 60px;
+     background: #333;
+ }
 
 /* main section**/
 

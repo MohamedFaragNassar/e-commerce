@@ -1,9 +1,9 @@
 import React from "react"
-
-const ShowProduct = ({productName,price})=>{
+import {Link} from "react-router-dom"
+const ShowProduct = ({productName,price,id})=>{
     return <>
         <div className="product-card">
-            <img src="./images/img1.jpg" alt = "product"/>
+            <Link to={`/product/${id}`}><img src="./images/img1.jpg" alt = "product"/></Link>
             <div className = "product-card-body">
                 <div className="product-name" >{productName}</div>
                 <div className="product-price" >${price}</div>

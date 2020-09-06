@@ -7,9 +7,9 @@ const Main = (props)=>{
 
      useEffect(() => {
          
-        fetch("/products")
+        fetch("/main")
             .then(res => res.json())
-            .then(result => setProducts(result))
+            .then(result =>  setProducts(result))
             .catch(err => console.log(err))
 
          return () => {
@@ -33,7 +33,7 @@ const Main = (props)=>{
                
             <div className="show-products">
                 {products.map(prod => 
-                     <ShowProduct productName={prod.productName} price = {prod.price} />
+                     <ShowProduct productName={prod.productName} price = {prod.price} id = {prod._id} />
                 )}
             </div> 
         </>

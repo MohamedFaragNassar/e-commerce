@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const MobileShema = new mongoose.Schema({
+const LaptopSchema = new mongoose.Schema({
     productName : {
         required:true,
         type: String
@@ -25,6 +25,10 @@ const MobileShema = new mongoose.Schema({
         type:String,
         required:true
     },
+    gpu:{
+        type:String,
+        required:true
+    },
     ram:{
         type:String,
         required:true
@@ -44,6 +48,6 @@ const MobileShema = new mongoose.Schema({
 },{timestamps:true}) 
 
 
-const mobile = mongoose.model("mobiles",MobileShema);
+const laptop = mongoose.model("laptops",MobileSchema);
 
-module.exports = mobile ;
+module.exports = laptop ;

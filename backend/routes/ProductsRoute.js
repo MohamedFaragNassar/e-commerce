@@ -1,16 +1,27 @@
 const express =  require("express")
 const Product =  require("../models/ProductsModel");
-const { resolveInclude } = require("ejs");
+
 
 const router = express.Router();
 
-router.get("/",(req,res)=>{
+
+router.get("/main",(req,res)=>{
     const products = Product.find()
             .then(result => res.send(result))
             .catch(err => console.log(err))
 })
 
-router.get("/:id",(req,res)=>{
+
+router.get("/category/:cat",(req,res)=>{
+    const category = req.params.cat
+    const products = Product.find()
+            .then(result => res.send(result.filter(prod => {
+                return prod.category == category
+            })))
+            .catch(err => console.log(err))
+})
+
+router.get("/product/:id",(req,res)=>{
     const prod = Product.findOne({_id:req.params.id})
                 .then(result =>res.send(result))
                 .catch(err=>console.log(err))
@@ -27,6 +38,13 @@ router.post("/add" , (req,res)=>{
     })
     const newProd = prod.save()
         .then(console.log("product added"))
+        .catch(err=>console.log(err))
+})
+
+router.delete("/delete/:id",(req,res)=>{
+    const id = req.params.id;
+    Product.findByIdAndDelete(id)
+        .then(result => res.json({redirect:"/manage"}))
         .catch(err=>console.log(err))
 })
 
