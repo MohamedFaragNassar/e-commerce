@@ -6,7 +6,7 @@ const LaptopSchema = new mongoose.Schema({
         type: String
     },
     manufacturer:{
-        type:Number,
+        type:String,
         required:true
     },
     category : {
@@ -48,6 +48,6 @@ const LaptopSchema = new mongoose.Schema({
 },{timestamps:true}) 
 
 
-const laptop = mongoose.model("laptops",MobileSchema);
+const laptop = mongoose.model("laptops",LaptopSchema);
 
 module.exports = laptop ;

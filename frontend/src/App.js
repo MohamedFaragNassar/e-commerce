@@ -74,7 +74,7 @@ function App() {
             <div className="mid-container">
                 <div className="main">
 
-                    <Route path="/add" exact={true} component={AddProduct}/>
+                    <Route path="/add/:model" component={AddProduct}/>
                     <Route path="/manage" exact={true} component={ManageScreen}/>
                     <Route path="/category/mobile" exact={true} component={MobileScreen}/>
                     <Route path="/category/laptops" exact={true} component={LaptopScreen}/>
@@ -90,7 +90,35 @@ function App() {
                 </div>                
             </div>
 
-            <footer></footer>
+            <footer>
+                <div className='footer-cat'>
+                    <div>Categories</div>
+                    <ul>
+                        <li><Link>Mobiles</Link></li>
+                        <li><Link>Laptos</Link></li>
+                        <li><Link>Pc Hardware</Link></li>
+                        <li><Link>Home Devices</Link></li>
+                        <li><Link>Other</Link></li>
+                    </ul>
+                </div>
+                <div className='footer-social'>
+                    <div>follow Us</div>
+                    <ul>
+                        <li><Link>Facebook</Link></li>
+                        <li><Link>twitter</Link></li>
+                        <li><Link>instgram</Link></li>
+                        <li><Link>pinterest</Link></li>
+                        <li><Link>linked in</Link></li>
+                    </ul>
+                </div>
+                <div className='footer-links'>
+                    <ul>
+                        <li><Link>About</Link></li>
+                        <li><Link>Contact</Link></li>
+                        <li><Link>Terms</Link></li>
+                    </ul>
+                </div>
+            </footer>
 
         </div>
      

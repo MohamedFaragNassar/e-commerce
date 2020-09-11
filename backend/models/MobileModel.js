@@ -6,7 +6,7 @@ const MobileShema = new mongoose.Schema({
         type: String
     },
     manufacturer:{
-        type:Number,
+        type:String,
         required:true
     },
     category : {

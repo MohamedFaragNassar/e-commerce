@@ -4,27 +4,35 @@ import LaptopPatern from "../components/LaptopPatern"
 import OtherPatern from "../components/OtherPattern"
 
 
+
+
 const AddProduct = (props)=>{
         const [addPatern, setAddPatern] = useState(<MobilePatern/>)
+        const [model,SetModel] = useState("mobile")
         
+        function handleChoice(patern,model){
+            setAddPatern(patern)
+            SetModel(model)
+        }
+
        useEffect(() => {
            
            return () => {
                //cleanup
            }
-       }, [addPatern])
+       }, [addPatern,model])
     return (
         <>
             <div className='add-product'>
-                <form action = "/add" method = "POST">
+                <form action = {`/add/${model}`} method = "POST">
                     <div>
                         <span>Category : </span>
                         <select className="cat-options" name="category">
-                            <option onClickCapture={()=>{setAddPatern(<MobilePatern/>)}} >mobile</option>
-                            <option onClickCapture={()=>{setAddPatern(<LaptopPatern/>)}}>laptops</option>
-                            <option onClickCapture={()=>{setAddPatern(<OtherPatern/>)} }>pc hardware</option>
-                            <option onClickCapture={()=>{setAddPatern(<OtherPatern/>)} }>Home devices</option>
-                            <option onClickCapture={()=>{setAddPatern(<OtherPatern/>)} }>other</option>
+                            <option onClickCapture={()=>handleChoice(<MobilePatern/>,"mobile")} >mobile</option>
+                            <option onClickCapture={()=>handleChoice(<LaptopPatern/>,"laptop")}>laptops</option>
+                            <option onClickCapture={()=>handleChoice(<OtherPatern/>,"other")}>pc hardware</option>
+                            <option onClickCapture={()=>handleChoice(<OtherPatern/>,"other")}>Home devices</option>
+                            <option onClickCapture={()=>handleChoice(<OtherPatern/>,"other")}>other</option>
                         </select>
                     </div>
                     {addPatern}

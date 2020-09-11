@@ -1,0 +1,14 @@
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.footer-cat{
+    margin-left: 50px;
+}
+
+footer li {
+    padding: 5px 20px;
+}

@@ -27,13 +27,14 @@ const ManageScreen = (props)=>{
     return <>
     
     <div className="manage-products">
-        <div className="manage-products-header"><span>Manage Products</span><Link to="/add">Add New Product</Link></div>
+        <div className="manage-products-header"><span>Manage Products</span><Link to="/add/mobile">Add New Product</Link></div>
         <div className="manage-products-body">
+            <div className="manage-products-item"><span>Name : </span><span>Amount : </span><span>Price : </span></div>
             {products.map(product=>
                 <div key={product._id} className="manage-products-item">
-                    <span>Name : {product.productName}</span>
-                    <span>Amount : {product.amount}</span>
-                    <span>Price : ${product.price}</span>
+                    <span>{product.productName}</span>
+                    <span>{product.amount}</span>
+                    <span>${product.price}</span>
                     <button className="edit-product">Edit Product</button>
                     <button onClick={()=>{deleteProduct(product._id)}} className="delete-product">Delete Product</button>   
                 </div>

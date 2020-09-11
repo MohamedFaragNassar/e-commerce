@@ -1,4 +1,5 @@
 @import './stylesheets/manage.css';
+@import './stylesheets/footer.css';
 
 
 *{
@@ -14,6 +15,10 @@ a{
 
 ul{
     list-style: none;
+}
+
+a,li,button{
+    outline: none;
 }
 
 .container{
@@ -283,6 +288,8 @@ button{
     margin: auto;
     grid-gap: 20px;
 }
+
+
 
 
 
