@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcrypt");
 const UserSchema = new mongoose.Schema({
     userName:{
         type:String,
@@ -22,6 +22,15 @@ const UserSchema = new mongoose.Schema({
     }
 
 })
+
+// dont forget to hash the password
+UserSchema.pre('save', async function(next){
+        const salt = await bcrypt.genSalt();
+        this.password = await bcrypt.hash(this.password, salt,)
+        next();
+} )
+
+
 
 const user = mongoose.model("users",UserSchema)
 

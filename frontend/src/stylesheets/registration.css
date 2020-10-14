@@ -1,0 +1,16 @@
+.signin-links{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-links button{
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.register button{
+    margin: auto;
+    padding: 10px;
+}

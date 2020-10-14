@@ -1,0 +1,74 @@
+.add-product{
+    width: 100%;
+    margin: auto;
+    height: auto;
+    text-align: center;
+    padding: 20px;
+}
+.add-product form{
+    text-align: left;
+    width: 80%;
+    margin: auto;
+    
+}
+
+.add-pattern div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.add-product form input{
+    width: 60%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border-style: none;
+    outline: none;
+}
+.add-product form span{
+    color: wheat;
+}
+.select-cat{
+    width: 80%;
+    margin: 0 auto 40px auto ;
+
+}
+.select-cat span{
+    margin-right: 20px;
+}
+.cat-options{
+    width: 70%;
+    height: 40px;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    outline: none;
+}
+
+.add-btn-wrapper{
+    width: fit-content;
+    margin: auto;
+    margin-top: 60px;
+}
+.add-btn{
+    margin: auto;
+    padding: 10px 20px;
+    
+}
+
+.add-pattern{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 80px;
+}
+
+.area{
+    grid-column: 1/3;
+}
+
+.area textarea{
+    width: 60%;
+    height: 200px;
+    padding: 20px;
+}
+

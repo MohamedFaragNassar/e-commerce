@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import MobilePatern from "../components/MobilePatern"
-import LaptopPatern from "../components/LaptopPatern"
-import OtherPatern from "../components/OtherPattern"
+import MobilePattern from "../components/MobilePattern"
+import LaptopPattern from "../components/LaptopPattern"
+import OtherPattern from "../components/OtherPattern"
 
 
 
 
 const AddProduct = (props)=>{
-        const [addPatern, setAddPatern] = useState(<MobilePatern/>)
+        const [addPattern, setAddPattern] = useState(<MobilePattern/>)
         const [model,SetModel] = useState("mobile")
         
         function handleChoice(patern,model){
-            setAddPatern(patern)
+            setAddPattern(patern)
             SetModel(model)
         }
 
@@ -20,22 +20,25 @@ const AddProduct = (props)=>{
            return () => {
                //cleanup
            }
-       }, [addPatern,model])
+       }, [addPattern,model])
     return (
         <>
             <div className='add-product'>
-                <form action = {`/add/${model}`} method = "POST">
-                    <div>
+                <form action = {`/add/${model}`} method = "POST" enctype="multipart/form-data" >
+                    <div className="select-cat">
                         <span>Category : </span>
                         <select className="cat-options" name="category">
-                            <option onClickCapture={()=>handleChoice(<MobilePatern/>,"mobile")} >mobile</option>
-                            <option onClickCapture={()=>handleChoice(<LaptopPatern/>,"laptop")}>laptops</option>
-                            <option onClickCapture={()=>handleChoice(<OtherPatern/>,"other")}>pc hardware</option>
-                            <option onClickCapture={()=>handleChoice(<OtherPatern/>,"other")}>Home devices</option>
-                            <option onClickCapture={()=>handleChoice(<OtherPatern/>,"other")}>other</option>
+                            <option onClickCapture={()=>handleChoice(<MobilePattern />,"mobile")} >mobile</option>
+                            <option onClickCapture={()=>handleChoice(<LaptopPattern />,"laptop")}>laptops</option>
+                            <option onClickCapture={()=>handleChoice(<OtherPattern />,"other")}>pc hardware</option>
+                            <option onClickCapture={()=>handleChoice(<OtherPattern />,"other")}>Home devices</option>
+                            <option onClickCapture={()=>handleChoice(<OtherPattern />,"other")}>other</option>
                         </select>
                     </div>
-                    {addPatern}
+                   
+                        {addPattern}
+                   
+                    <div className="add-btn-wrapper"><button className="add-btn">Add Product</button></div>
                 </form>
             </div>
         </>

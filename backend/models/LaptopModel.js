@@ -45,6 +45,17 @@ const LaptopSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    discription:{
+        type:String,
+        required:true
+    },
+    mainImage:{
+        type: String,
+        //required: true
+    },
+    images:{
+        type: Array,
+    }
 },{timestamps:true}) 
 
 

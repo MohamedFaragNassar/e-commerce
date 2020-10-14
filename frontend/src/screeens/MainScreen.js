@@ -33,7 +33,7 @@ const Main = (props)=>{
                
             <div className="show-products">
                 {products.map(prod => 
-                     <ShowProduct productName={prod.productName} price = {prod.price} id = {prod._id} />
+                     <ShowProduct productName={prod.productName} price = {prod.price} id = {prod._id} mainImage = {prod.mainImage} />
                 )}
             </div> 
         </>

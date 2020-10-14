@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-
+import MobileDetails from "../components/productDetails/Mobile"
 const ProductDetails = (props)=>{
      
      const [product, setProduct] = useState({})
@@ -16,10 +16,7 @@ const ProductDetails = (props)=>{
 
      return <>
                <div className="product-details">
-                    <div className="header">{product.productName}</div>
-                    <img src="./images/img1.jpg" alt="product" />
-                    <div className="product-price">Price : {product.price}</div>
-                    <div className="product-specs">Specifications : {product.specifications}</div>
+                    <MobileDetails product={product} />
                </div>
     </>
 }

@@ -35,7 +35,7 @@ const ManageScreen = (props)=>{
                     <span>{product.productName}</span>
                     <span>{product.amount}</span>
                     <span>${product.price}</span>
-                    <button className="edit-product">Edit Product</button>
+                    <Link className="edit-product" to={`/edit/${product._id}`} >Edit Product</Link>
                     <button onClick={()=>{deleteProduct(product._id)}} className="delete-product">Delete Product</button>   
                 </div>
                 )}

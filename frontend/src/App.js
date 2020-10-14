@@ -12,7 +12,10 @@ import OtherScreen from './screeens/OtherScreen';
 import SidebarFilter from './components/SidebarFilter';
 import AdminDropdown from "./components/AdminDropdown";
 import ManageScreen from "./screeens/ManageScreen";
-
+import UpdateProduct from "./screeens/UpdateProduct";
+import SignScreen from "./screeens/SignScreen";
+import RegisterScreen from "./screeens/RegisterScreen";
+import SideNave from "./components/SideNave"
 
 function App() {
 
@@ -72,9 +75,17 @@ function App() {
         <div className="container">
 
             <div className="mid-container">
+
+                <div className="sidebar">
+                    <Route path="/main" component={SideNave}/>    
+                </div>
+
                 <div className="main">
 
                     <Route path="/add/:model" component={AddProduct}/>
+                    <Route path="/register" component={RegisterScreen}/>
+                    <Route path="/signin" component={SignScreen}/>
+                    <Route path="/edit/:id" component={UpdateProduct}/>
                     <Route path="/manage" exact={true} component={ManageScreen}/>
                     <Route path="/category/mobile" exact={true} component={MobileScreen}/>
                     <Route path="/category/laptops" exact={true} component={LaptopScreen}/>
@@ -85,30 +96,28 @@ function App() {
                     <Route path="/main" exact={true} component={Main}/>
 
                 </div>
-                <div className="sidebar">
-                    <Route path="/main" component={SidebarFilter}/>    
-                </div>                
+                                
             </div>
 
             <footer>
                 <div className='footer-cat'>
                     <div>Categories</div>
                     <ul>
-                        <li><Link>Mobiles</Link></li>
-                        <li><Link>Laptos</Link></li>
-                        <li><Link>Pc Hardware</Link></li>
-                        <li><Link>Home Devices</Link></li>
-                        <li><Link>Other</Link></li>
+                        <li><Link to="/category/mobile" >Mobiles</Link></li>
+                        <li><Link to="/category/laptops">Laptos</Link></li>
+                        <li><Link to="/category/pc">Pc Hardware</Link></li>
+                        <li><Link to="/category/other">Home Devices</Link></li>
+                        <li><Link to="">Other</Link></li>
                     </ul>
                 </div>
                 <div className='footer-social'>
                     <div>follow Us</div>
                     <ul>
-                        <li><Link>Facebook</Link></li>
-                        <li><Link>twitter</Link></li>
-                        <li><Link>instgram</Link></li>
-                        <li><Link>pinterest</Link></li>
-                        <li><Link>linked in</Link></li>
+                        <li><Link to="/">Facebook</Link></li>
+                        <li><Link to="/">twitter</Link></li>
+                        <li><Link to="/">instgram</Link></li>
+                        <li><Link to="/">pinterest</Link></li>
+                        <li><Link to="/">linked in</Link></li>
                     </ul>
                 </div>
                 <div className='footer-links'>

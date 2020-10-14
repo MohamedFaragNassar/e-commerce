@@ -1,7 +1,7 @@
 .manage-products{
     background: #d3d3d3;
     height: 400px;
-    overflow: hidden;
+    overflow-y: auto;
     scroll-behavior: auto;
     border: 1px solid #bc1c1c;
 }
