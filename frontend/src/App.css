@@ -189,7 +189,7 @@ button{
 
 .sidebar{
     min-width: 7%;
-    min-height: 100vh;
+    height: 100vh;
     background: #f3f3f3;
 }
 .full-sidebar{

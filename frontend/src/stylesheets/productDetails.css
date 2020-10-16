@@ -2,6 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: -1px 2px 23px -5px rgba(0,0,0,.5);
+    margin-bottom: 50px;
+    padding: 10px;
 }
 
 .header{
@@ -98,3 +101,32 @@
     margin-left: 50px;
     
 }
+
+/*product specificatios*/
+
+.product-specs {
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.product-specs-header, .product-discr-header{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.product-specs-body  {
+    margin-left: 50px;
+}
+
+.product-specs-body ul li {
+    padding: 20px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.product-discr-body{
+    margin-left: 30px;
+    padding: 20px;
+}
+

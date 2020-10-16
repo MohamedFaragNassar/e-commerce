@@ -1,16 +1,22 @@
 import React, {useEffect,  useState } from "react"
 
 const MobileDetails = ({product}) =>{
-        console.log(product.mainImage)
+        
         const [image, setImage] = useState("")
+        const [specs, setSpecs] = useState([])
         const images = ["../1602513837764-photo1.png","../1602520184369-people-2587807_1920.jpg","../1602520238988-3800880.jpg"]
        useEffect(() => {
            setImage("../"+product.mainImage)
+           if(product.specifications){
+               setSpecs(product.specifications.split(","))
+           }
+           
            return () => {
                //
            }
        }, [product])
-    return <>
+       
+  return <>
         <div className="header">{product.productName}</div>
         <div className="main-details">
             <div className="product-images">
@@ -39,7 +45,22 @@ const MobileDetails = ({product}) =>{
         </div>
         
         
-        <div className="product-specs">Specifications : {product.specifications}</div>
+        <div className="product-specs">
+            <div className="product-specs-header">Specifications</div>
+            <div className="product-specs-body">
+                <ul>
+                    {specs.map(spec => (
+                        <li>{spec}</li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+        <div className="product-discription">
+        <div className="product-discr-header">Description</div>
+            <div className="product-discr-body">
+                {product.discription}
+            </div>
+        </div>
     </>
 }
 
