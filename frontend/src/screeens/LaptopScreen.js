@@ -9,7 +9,7 @@ const LaptosScreen = (props)=>{
             .then(result => setMobiles(result))
             .catch(err => console.log(err))
         return () => {
-            //cleanup
+            
         }
     }, [])
 

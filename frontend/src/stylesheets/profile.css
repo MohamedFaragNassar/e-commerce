@@ -1,0 +1,139 @@
+.profile-page{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+}
+.profile-body{
+    width:80%;
+    margin-left: 20px;
+    overflow: hidden;
+    overflow-x: auto;
+}
+.profile-nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 20%;
+    height: 50vh;
+    background: white;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05), 0 3px 5px 0 rgba(0, 0, 0, 0.02);
+    border-radius: 5px;
+
+}
+
+.profile-main-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*address card */
+
+.default-address{
+    width: 50%;
+    padding: 10px;
+    height: 50vh;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05), 0 3px 5px 0 rgba(0, 0, 0, 0.02);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    
+}
+
+.default-address div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+.default-address div span{
+    margin-bottom: 5px;
+}
+.default{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    padding: 5px 10px;
+    background: #FFD333;
+    margin-bottom: 10px;
+}
+
+.default-address div button{
+    color: #276678;
+}
+
+
+/* address card */
+.address{
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05), 0 3px 5px 0 rgba(0, 0, 0, 0.02);
+    margin-top: 10px;
+    
+
+}
+.address-card{
+    width: 245px;
+    height: auto;
+    min-height: 200px;
+    padding: 10px;
+    border : 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    
+    
+}
+
+.add-address-btn{
+    width: 245px;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px dashed #ddd;
+    background: #f4f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 10px;
+
+}
+.add-address-btn:hover{
+    background: #fff;
+}
+.add-address-btn i{
+    font-size: 50px;
+    color: #ddd;
+}
+.add-address-btn span{
+    font-size: 18px;
+}
+
+.address-card .btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.address-card .btns button,.address-card .btns a{
+    color: #276678;
+}

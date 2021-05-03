@@ -1,0 +1,104 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 500;
+}
+
+.modal {
+  width: 40%;
+  background: white;
+  border-radius: 5px;
+  height: auto;
+  min-height: 200px;
+  z-index: 600;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.08);
+}
+
+.modal-header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.modal-body {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+  height: auto;
+}
+
+.modal-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 30%;
+}
+
+.confirm {
+  padding: 10px 15px;
+  background: #2d6187;
+  color: white;
+  font-size: 15px;
+  font-weight: 550;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.confirm:hover {
+  background: #00587a;
+}
+
+.cancel {
+  padding: 10px 15px;
+  color: #0f3057;
+  background: white;
+  font-size: 15px;
+  font-weight: 550;
+  border: 1px solid #0f3057;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.cancel:hover {
+  background: #f4f4f2;
+}
+
+/*sale modal*/
+
+.sale-modal {
+  height: 280px;
+}
+
+.sale-modal .modal-header {
+  margin: auto;
+  width: fit-content;
+}
+
+.sale-modal .modal-body {
+  width: 70%;
+  margin: 25px auto auto auto;
+  padding: 10px;
+}
+
+.sale-modal .modal-body div {
+  margin-bottom: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sale-modal .modal-body div input {
+  width: 60%;
+  padding: 10px;
+}
+
+.sale-modal .modal-btn {
+  left: 38%;
+}

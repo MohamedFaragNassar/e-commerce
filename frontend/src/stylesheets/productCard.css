@@ -3,8 +3,11 @@
     width:280px;
     height: 400px;
     padding: 5px;
-    border: 1px solid #f4f4f4;
+    border: 2px solid #ddd;
+    border-radius: 8px;
     position: relative;
+    overflow: hidden;
+    background: white;
 }
 
 .product-card img{
@@ -14,7 +17,7 @@
     
 }
 
-.product-card button{
+.add-to-cart{
   width: 70%;
   padding: 5px;
   height: 40px;
@@ -27,7 +30,39 @@
   position: absolute;
   bottom: 30%;
   left: 40px;
+  background: white;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  
 }
+
+.add-to-cart:hover{
+  border: 1px solid #008891;
+}
+
+
+
+.add-wishlist{
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 25px;
+  background: transparent;
+  border: none;
+  color: #e84545;
+  font-weight: bold;
+  background: white;
+  border-bottom-right-radius:10px ;
+  padding: 5px 10px 10px 5px ;
+  transition: all .5s ease;
+}
+
+.show-wishlist{
+  display: block;
+}
+
 
 .product-card button img {
   width: 40px;
@@ -68,6 +103,33 @@
 }
 .review{
   width: 60%;
-  height: 80%;
-  background: #f4f4f4;
+  margin-left: 50px;
+  margin-bottom: 15px;
+}
+
+
+.product-sale{
+  width: 180px;
+  font-size: 18px;
+  font-weight: 500;
+  background: #e84545;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 20px;
+  right: -50px;
+  box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, .02);
+
+}
+
+.old{
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+  text-decoration: line-through 2px #a20a0a;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: .6;
 }

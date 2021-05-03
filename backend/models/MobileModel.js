@@ -1,5 +1,14 @@
 const mongoose = require("mongoose")
 
+
+const saleSchema = new mongoose.Schema({
+    salePercentage:{type:Number,required:true,default : 0},
+    salePrice:{type:Number,required:true,default:0},
+    endDate:{type:Date,},
+
+})
+
+
 const MobileShema = new mongoose.Schema({
     productName : {
         required:true,
@@ -13,12 +22,12 @@ const MobileShema = new mongoose.Schema({
         type:String,
         required : true
     },
-    amount: {
-        type:String,
+    amount:{
+        type:Number,
         required : true
     },
     price:{
-        type:String,
+        type:Number,
         required : true
     },
     cpu:{
@@ -26,21 +35,21 @@ const MobileShema = new mongoose.Schema({
         required:true
     },
     ram:{
-        type:String,
+        type:Number,
         required:true
     },
     storage:{
-        type:String,
+        type:Number,
         required:true
     },
     display:{
         type:String,
         required:true
     },
-    specifications:{
-        type:String,
-        required:true
-    },
+    specifications:[{
+        spec:{type:String,required:true},
+        value:{type:String,required:true},
+    }],
     discription:{
         type:String,
         required:true
@@ -49,9 +58,16 @@ const MobileShema = new mongoose.Schema({
         type: String,
         //required: true
     },
-    images:{
-        type: Array,
-    }
+    images:[
+        {type: String,}
+   ],
+   rating:{
+       type: Number,
+       default:0,
+       required:true
+   },
+    onSale:{ type: Boolean,required: true, default: false},
+    sale:saleSchema,
 },{timestamps:true}) 
 
 

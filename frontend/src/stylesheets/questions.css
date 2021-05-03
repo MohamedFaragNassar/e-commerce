@@ -1,0 +1,96 @@
+.questions-modal{
+    height: 45vh;
+}
+.question{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+}
+
+.question textarea{
+    width: 100%;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    height: 60px;
+    resize: none;
+    margin-top: 5px;
+    outline: none;
+    padding: 10px;
+}
+
+.anqc{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.add-new-question{
+    width: 70%;
+    height: 80px;
+    border: 1px solid #d8e3e7;
+    border-radius: 10px;
+    background: white;
+    margin: auto;
+    font-size: 15px;
+    font-weight: 800;
+    color: #1687a7;
+}
+
+.add-new-question:hover{
+    background: #f4f9f9;
+}
+
+.show-questions{
+    width: 100%;
+    background: white;
+    margin-top: 20px;
+    min-height: 67vh;
+    padding: 10px;
+}
+
+.q-card{
+    margin-top: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 95%;
+    word-wrap: anywhere;
+    background-color: white;
+}
+
+.card-big{
+    padding: 10px;
+
+}
+
+.card-small{
+    padding:5px;
+
+}
+.card-big .q{
+    font-size: 18px;
+    font-weight: 600;
+    color: #03506f;
+}
+.card-small .q{
+    font-size: 15px;
+    font-weight: 500;
+    color: #03506f;
+}
+
+.card-big .a{
+    font-size: 15px;
+    font-weight: 400;
+}
+.card-small .a{
+    font-size: 13px;
+    font-weight: 350;
+}

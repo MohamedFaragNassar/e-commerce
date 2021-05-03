@@ -5,7 +5,8 @@ const  config =  require("./config")
 const getToken = (user) =>{
    return jwt.sign({
         _id : user._id,
-        userName: user.userName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         password: user.password,
         isAdmin : user.isAdmin
     }, config.JWT_SECRET,{
@@ -14,10 +15,14 @@ const getToken = (user) =>{
 }
 
 const isAuth = (req,res,next)=>{
-    const token = req.headers.authorization;
+    let token
+    
+    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
+       token = req.headers.authorization.split(" ")[1];
+    }
+    
     if(token){
-
-        jwt.verify(tokent, config.JWT_SECRET,(err, decodedToken)=>{
+            jwt.verify(token, config.JWT_SECRET,(err, decodedToken)=>{
             if(err){
                 res.status(401).send({message:"Invalid Token"})
             }

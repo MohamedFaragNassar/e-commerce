@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const UserSchema = new mongoose.Schema({
-    userName:{
+    firstName:{
+        type:String,
+        required:true
+    },
+    lastName:{
         type:String,
         required:true
     },
@@ -15,15 +19,19 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    image:{
+        type: String,
+    },
     isAdmin:{
         type:Boolean,
         required:true,
         default:false
-    }
+    },
+    
+    
+},{timestamps:true})
 
-})
 
-// dont forget to hash the password
 UserSchema.pre('save', async function(next){
         const salt = await bcrypt.genSalt();
         this.password = await bcrypt.hash(this.password, salt,)

@@ -1,0 +1,78 @@
+.admin {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+
+/* header */
+.admin-header{
+  height: 80px;
+  width: 100%;
+  padding: 10px 50px 10px 50px ;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  border-bottom: 2px solid #F7F7F7;
+}
+
+.admin-header a{
+  font-size: 25px;
+  font-weight: bold;
+  color: #276678;
+}
+
+.admin-header button{
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.admin-header button:hover{
+  color: #1687a7;
+}
+
+/*end header */
+
+.admin-menu {
+  width: 18%;
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: start;
+  background: white;
+  min-width: 80px;
+  padding: 50px 0px;
+  margin-bottom: 50px;
+  position: fixed;
+  left: 0;
+  top: 80px;
+}
+.admin-menu div {
+  margin-bottom: 25px;
+  width: 80%;
+  padding: 20px ; 
+  border-bottom-left-radius: 1000px;
+  border-top-left-radius: 1000px;
+}
+
+.admin-menu div:hover {
+  background: #F7F7F7;
+  
+}
+.admin-menu div a{
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+}
+.admin-body {
+  width: 82%;
+  margin-left: 18%;
+  margin-top: 80px;
+  background: #F7F7F7;
+  min-height: 90vh;
+  /*  margin-left: 21%; */
+}

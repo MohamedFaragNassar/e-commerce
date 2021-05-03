@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import ShowProduct from "../components/ShowProduct"
-const PcScreen = (props)=>{
+
+const PcScreen = ()=>{
     const [mobiles,setMobiles] = useState([]);
 
     useEffect(() => {
@@ -8,9 +9,7 @@ const PcScreen = (props)=>{
             .then(res => res.json())
             .then(result => setMobiles(result))
             .catch(err => console.log(err))
-        return () => {
-            //cleanup
-        }
+       
     }, [])
 
     return <>

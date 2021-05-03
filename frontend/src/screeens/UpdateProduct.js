@@ -1,64 +1,48 @@
-import React, { useState, useEffect } from 'react'
-import MobilePattern from "../components/MobilePattern"
-import LaptopPattern from "../components/LaptopPattern"
-import OtherPattern from "../components/OtherPattern"
-
-
-
+import React, {useEffect, } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import ProductForm from "../components/ProductForm"
+import {getProductDetails} from '../Actions/productActions'
+import Spinner from '../components/Spinner'
+import Status from '../components/Status'
+import {useHistory} from "react-router-dom"
 
 const UpdateProduct = (props)=>{
+    const id =props.match.params.id
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const {loading,error,product} = useSelector(state => state.productDetails)
+    const {updateLoading,updateError,updatedproduct} = useSelector(state => state.productDetails)
 
-    const [product,setProduct] = useState({})
+    console.log( document.querySelectorAll(".update-form input"))
+
     useEffect(() => {
-       fetch(`/product/${props.match.params.id}`)
-            .then(res => res.json())
-            .then(result =>setProduct(result)) 
-            .catch(err => console.log(err))
 
-       return () => {
-           //cleanup
+       dispatch(getProductDetails(id))
+
+       if(updatedproduct === "success"){
+           history.push("/manage")
        }
+
+
    }, [])
     
-    if(product.category === "mobile"){
-       return <>
+   return <>
+         {loading? <Spinner /> : 
+            error ? <Status isOpen={true} message="Ops... Somthing went wrong when getting product details, please try again"  />:
+            product ? <>
             <div className='add-product'>
-                <form action = {`/edit/${product._id}`} method = "POST">
-                    <div>
+                <form className="update-form" >
+                    <div className="select-cat">
                         <span>Category : </span><input readOnly={true} name="category" value={product.category} ></input>
                     </div>
-                        <MobilePattern product={product}/>
-                    <div><button type="submit" className="add-btn" >Update Product</button></div>
+                        <ProductForm pattern={product.category} product={product}/>
                 </form> 
+                {updateLoading ? <Spinner /> : updateError ? <Status isOpen = {true} status="fail"
+                                    message="Ops... Somthing went wrong When trying to add new product"/> :null}
+                    
             </div>
+            </>:null}
          </> 
-       }else if(product.category === "laptops"){
-
-           return <>
-            <div className='add-product'>
-                <form action = {`/edit/${product._id}`} method = "POST">
-                    <div>
-                        <span>Category : </span><input readOnly={true} name="category" value={product.category} ></input>
-                    </div>
-                        <LaptopPattern product={product}/>
-                    <div><button type="submit" className="add-btn">Update Product</button></div>
-                </form> 
-            </div>
-    </>  
-       }else{
-        return <>
-            <div className='add-product'>
-                <form action = {`/edit/${product._id}`} method = "POST">
-                    <div>
-                        <span>Category : </span><input readOnly={true} name="category" value={product.category} ></input>
-                    </div>
-                        <OtherPattern product={product}/>
-                    <div><button type="submit" className="add-btn">Update Product</button></div>
-                </form> 
-            </div>
-         </> 
-       }
-    
     }
     
 export default UpdateProduct;

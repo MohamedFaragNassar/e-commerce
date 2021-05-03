@@ -1,0 +1,137 @@
+.side-item-img{
+    width: 50%;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.showCart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.showCart ul{
+    width: 100%;
+}
+
+.showCart ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    height: 100px;
+    position: relative;
+    border-top: 3px solid #008891;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 3px 5px 0 rgba(0, 0, 0, .04);
+    background: white;
+}
+
+.delete-btn{
+    padding: 5px;
+    max-width:fit-content;
+    position: absolute;
+    top: 0;
+    left: 90%;
+    font-size: 15px;
+
+}
+
+.side-item-name{
+    font-size: 15px;
+    font-weight: 600;
+    word-break: break-all;
+    
+}
+
+.side-item-price{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.side-items-body{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-items-body div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80%;
+}
+
+.side-item-cart{
+    background: transparent;
+    border-style: none;
+
+}
+
+.side-item-cart img{
+    width: 30px;
+    height: 30px;
+}
+
+.lower-sec{
+    margin-top: auto;
+}
+
+.showCart h3{
+    width: fit-content;
+    margin: auto;
+}
+
+.showCart ul {
+    margin-bottom: 25px;
+}
+
+.clear-wishlist{
+    background: transparent;
+    border: 1px solid #008891;
+    border-radius : 5px;
+    background: #1687a7;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+ }
+
+ .clear-wishlist:hover{
+     background: #008891;
+ }
+
+
+
+ /* filter */
+ 
+ .filter{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin-bottom: 10px;
+ }
+
+ .filter-header{
+     font-size: 20px;
+     font-weight: bold;
+ }
+ .filter-select{
+     margin-top: 10px;
+ }
+
+ .cat-options{
+     width: 100%;
+     margin-top: 5px;
+ }

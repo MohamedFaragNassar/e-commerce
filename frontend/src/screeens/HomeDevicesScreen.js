@@ -8,9 +8,7 @@ const HomeDevicesScreen = (props)=>{
             .then(res => res.json())
             .then(result => setMobiles(result))
             .catch(err => console.log(err))
-        return () => {
-            //cleanup
-        }
+        
     }, [])
 
     return <>

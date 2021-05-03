@@ -1,46 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import MobilePattern from "../components/MobilePattern"
-import LaptopPattern from "../components/LaptopPattern"
-import OtherPattern from "../components/OtherPattern"
+import { useSelector } from 'react-redux'
+import ProductForm from "../components/ProductForm"
+import Spinner from '../components/Spinner'
+import Status from "../components/Status"
 
 
-
-
-const AddProduct = (props)=>{
-        const [addPattern, setAddPattern] = useState(<MobilePattern/>)
+const AddProduct = ()=>{
+        const [addPattern, setAddPattern] = useState("mobile")
         const [model,SetModel] = useState("mobile")
+
+        const {loading,error,addedProduct} = useSelector(state => state.addProduct)
+
         
-        function handleChoice(patern,model){
-            setAddPattern(patern)
+        
+        function handleChoice(model){
+            setAddPattern(model)
             SetModel(model)
         }
-
+       
        useEffect(() => {
-           
-           return () => {
-               //cleanup
-           }
+          
        }, [addPattern,model])
+
+    
     return (
         <>
             <div className='add-product'>
-                <form action = {`/add/${model}`} method = "POST" enctype="multipart/form-data" >
+                <form >
                     <div className="select-cat">
                         <span>Category : </span>
                         <select className="cat-options" name="category">
-                            <option onClickCapture={()=>handleChoice(<MobilePattern />,"mobile")} >mobile</option>
-                            <option onClickCapture={()=>handleChoice(<LaptopPattern />,"laptop")}>laptops</option>
-                            <option onClickCapture={()=>handleChoice(<OtherPattern />,"other")}>pc hardware</option>
-                            <option onClickCapture={()=>handleChoice(<OtherPattern />,"other")}>Home devices</option>
-                            <option onClickCapture={()=>handleChoice(<OtherPattern />,"other")}>other</option>
+                            <option onClickCapture={()=>handleChoice("mobile")} >mobile</option>
+                            <option onClickCapture={()=>handleChoice("laptops")}>laptops</option>
+                            <option onClickCapture={()=>handleChoice("pc hardware")}>pc hardware</option>
+                            <option onClickCapture={()=>handleChoice("home devices")}>Home devices</option>
+                            <option onClickCapture={()=>handleChoice("other")}>other</option>
                         </select>
                     </div>
-                   
-                        {addPattern}
-                   
-                    <div className="add-btn-wrapper"><button className="add-btn">Add Product</button></div>
+                   <ProductForm pattern={addPattern} />
                 </form>
+                {loading ? <Spinner /> : error ? <Status isOpen = {true} status="fail"
+                                         message="Ops... Somthing went wrong When trying to add new product" size="big"/> :
+                    addedProduct==="success" ? <Status isOpen = {true} status="success"
+                    message="New product added successfully" size="big"/> :null }
             </div>
+          
         </>
         
     )

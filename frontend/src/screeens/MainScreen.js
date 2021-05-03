@@ -1,39 +1,62 @@
 import React, { useState,useEffect } from 'react'
 import ShowProduct from "../components/ShowProduct"
+import Search from '../components/Search'
+import { useDispatch, useSelector } from 'react-redux'
+import {getAllProducts,getProducts} from '../Actions/productActions'
+import HighlightCard from '../components/HighlightCard'
 
-const Main = (props)=>{
+const Main = ()=>{
 
-    const [products,setProducts] = useState([])
+    const {products} = useSelector(state => state.allProducts)
+    const {topRated} = useSelector(state => state.listProducts)
 
-     useEffect(() => {
+    let onSlaeProducts 
+    if(products){
+        onSlaeProducts = products.filter(product => product.onSale == true) 
+
+    }
+    
+    const dispatch = useDispatch()
+
+    let highlightedPoducts = onSlaeProducts
+
+    if(highlightedPoducts.length < 5){
+        function compare( a, b ) {
+            if ( a.createdAt < b.createdAt ){
+              return -1;
+            }
+            if ( a.createdAt > b.createdAt ){
+              return 1;
+            }
+            return 0;
+          }
+        const newProducts = products?.sort(compare).slice(0,5) 
+        highlightedPoducts = [ ...new Set(onSlaeProducts.concat(newProducts)) ]
+        
+    }
+
+    
+    useEffect(() => {
+
+        dispatch(getAllProducts())
+        dispatch(getProducts())
          
-        fetch("/main")
-            .then(res => res.json())
-            .then(result =>  setProducts(result))
-            .catch(err => console.log(err))
-
-         return () => {
-            // cleanup
-         }
      }, [])
 
      return (
         <>
-            <div className= "hot-offer">
-
-            </div>
-                
             <div className = "search">
-                <form className = "search-form">
-                    <input className="search-input" type="text" ></input>
-                    <button className="search-btn" >search</button>
-                </form>
-            </div>
-                    
-               
-            <div className="show-products">
-                {products.map(prod => 
-                     <ShowProduct productName={prod.productName} price = {prod.price} id = {prod._id} mainImage = {prod.mainImage} />
+                <Search />
+            </div> 
+            {highlightedPoducts&&<HighlightCard products={highlightedPoducts} />} 
+           <div className="toprated">
+                {topRated&&topRated.map(prod => 
+                     {return prod[1].length>0&&<div key={prod}  className="toprated" >
+                         <div className="toprated-header">{`Top Rated ${prod[0]}`}</div>
+                         <div className="show-products">{prod[1].map(e => 
+                            <ShowProduct product={e} key={e._id} />    
+                        )}</div>
+                     </div>}
                 )}
             </div> 
         </>

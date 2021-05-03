@@ -3,6 +3,7 @@ footer{
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    border-top : 2px solid #0F3057;
 }
 
 .footer-cat{

@@ -1,0 +1,53 @@
+.sidebar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  transition: all 0.5s ease;
+  z-index: 2000;
+}
+
+.full-sidebar {
+  min-width: 30%;
+  min-height: 100vh;
+  transition: all 0.5s ease;
+}
+
+.hide {
+  display: none;
+}
+
+.sidebar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  position: absolute;
+}
+
+.sidebar-comp {
+  width: 300px;
+  background: #f4f4f4;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 3px 5px 0 rgba(0, 0, 0, 0.07);
+  padding: 10px;
+  border-radius: 5px;
+  position: sticky;
+  top: 70px;
+  transition: all 0.5s ease;
+  overflow-y: auto;
+  scroll-behavior: auto;
+  height: 87vh;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  
+}
+.sidebar-comp::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 25px;
+  background: #eeeeee;
+  transform: rotate(45deg);
+  position: relative;
+  top: 25px;
+  left: -35px;
+  transition: all 0.5s ease;
+}

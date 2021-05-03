@@ -1,0 +1,25 @@
+.shipping-info {
+  margin: 25px 0;
+}
+
+.edit-profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05), 0 3px 5px 0 rgba(0, 0, 0, 0.02);
+  height: 50vh;
+}
+
+.edit-profile form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+}
+
+.edit-profile-inputs div{
+  margin-top: 10px;
+}

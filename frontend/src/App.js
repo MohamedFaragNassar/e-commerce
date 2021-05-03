@@ -1,136 +1,17 @@
 import React from 'react';
-import { Switch, Route,BrowserRouter,Router, Redirect, Link } from 'react-router-dom';
-import Main from "./screeens/MainScreen"
+import {Route,BrowserRouter,Switch } from 'react-router-dom';
 import './App.css';
-import AddProduct from './screeens/AddProduct';
-import ProductDetails from './screeens/ProductDetails';
-import MobileScreen from './screeens/MobileScreen';
-import PcScreen from './screeens/PcScreen';
-import LaptopScreen from './screeens/LaptopScreen';
-import HomeDevicesScreen from './screeens/HomeDevicesScreen';
-import OtherScreen from './screeens/OtherScreen';
-import SidebarFilter from './components/SidebarFilter';
-import AdminDropdown from "./components/AdminDropdown";
-import ManageScreen from "./screeens/ManageScreen";
-import UpdateProduct from "./screeens/UpdateProduct";
-import SignScreen from "./screeens/SignScreen";
-import RegisterScreen from "./screeens/RegisterScreen";
-import SideNave from "./components/SideNave"
-
+import {useSelector} from 'react-redux';
+import AdminPanel from './screeens/admin/AdminPanel'
+import Customer from './screeens/Customer';
+import ProtectedRoute from './components/ProtectedRoute';
 function App() {
-
-    function handleShowMenu(){
-        const menu = document.querySelector(".nav-user-menu")
-        menu.classList.toggle("show")
-    }
-
   return (
     <BrowserRouter>
-        
-        <header>
-            <div className="container">
-
-                <div className="navigation">
-
-                    <div className="logo">
-                        <Link to="#"><img src="../../public/images/logo.png" alt="" /></Link>
-                        <Link className="name" to="/main">Electronices Shop</Link>
-                    </div>
-
-                    <div className="main-menu">
-                        <ul>
-                            <li><Link to="/main">Home</Link></li>
-                            <li className="cat" ><Link to="/categories">Categories</Link>
-                                <div className="items-container" >
-                                    <ul className="cat-items" >
-                                        <li><Link to="/category/mobile">Mobiles</Link></li>
-                                        <li><Link to="/category/laptops">Laptops</Link></li>
-                                        <li><Link to="/category/homedevices">Home Devices</Link></li>
-                                        <li><Link to="/category/pc">Pc Hardware</Link></li>
-                                        <li><Link to="/category/other">Other</Link></li>
-                                    </ul>
-                                </div>    
-                            </li>
-                            <li><Link to="/contact">Contact</Link></li>
-                        </ul>
-                    </div>
-                    
-
-                    <div className="user">
-
-                        <div className="nav-user">
-                            <img src="./images/profile.jpg" alt=""/>
-                            <button onClick={()=>{handleShowMenu()}} className="nav-user-details">v</button>
-                        </div>
-                        <div className="nav-user-menu">
-                            <AdminDropdown/>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-
-            </div>
-        </header>
-        <div className="container">
-
-            <div className="mid-container">
-
-                <div className="sidebar">
-                    <Route path="/main" component={SideNave}/>    
-                </div>
-
-                <div className="main">
-
-                    <Route path="/add/:model" component={AddProduct}/>
-                    <Route path="/register" component={RegisterScreen}/>
-                    <Route path="/signin" component={SignScreen}/>
-                    <Route path="/edit/:id" component={UpdateProduct}/>
-                    <Route path="/manage" exact={true} component={ManageScreen}/>
-                    <Route path="/category/mobile" exact={true} component={MobileScreen}/>
-                    <Route path="/category/laptops" exact={true} component={LaptopScreen}/>
-                    <Route path="/category/homedevices" exact={true} component={HomeDevicesScreen}/>
-                    <Route path="/category/pc" exact={true} component={PcScreen}/>
-                    <Route path="/category/other" exact={true} component={OtherScreen}/>
-                    <Route path="/product/:id" component={ProductDetails}/>
-                    <Route path="/main" exact={true} component={Main}/>
-
-                </div>
-                                
-            </div>
-
-            <footer>
-                <div className='footer-cat'>
-                    <div>Categories</div>
-                    <ul>
-                        <li><Link to="/category/mobile" >Mobiles</Link></li>
-                        <li><Link to="/category/laptops">Laptos</Link></li>
-                        <li><Link to="/category/pc">Pc Hardware</Link></li>
-                        <li><Link to="/category/other">Home Devices</Link></li>
-                        <li><Link to="">Other</Link></li>
-                    </ul>
-                </div>
-                <div className='footer-social'>
-                    <div>follow Us</div>
-                    <ul>
-                        <li><Link to="/">Facebook</Link></li>
-                        <li><Link to="/">twitter</Link></li>
-                        <li><Link to="/">instgram</Link></li>
-                        <li><Link to="/">pinterest</Link></li>
-                        <li><Link to="/">linked in</Link></li>
-                    </ul>
-                </div>
-                <div className='footer-links'>
-                    <ul>
-                        <li><Link>About</Link></li>
-                        <li><Link>Contact</Link></li>
-                        <li><Link>Terms</Link></li>
-                    </ul>
-                </div>
-            </footer>
-
-        </div>
-     
+      <Switch>
+          <ProtectedRoute path="/admin" component={AdminPanel} />
+          <Route path="/" component={Customer} />
+      </Switch>
     </BrowserRouter>
    
   );

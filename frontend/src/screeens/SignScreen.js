@@ -1,41 +1,21 @@
-import React from "react"
-import { useState} from "react"
-import { Link } from "react-router-dom"
-import { useSelector, useDispatch } from 'react-redux';
-import {signin} from "../Actions/userAction"
+import React from 'react'
+import {Route } from 'react-router-dom'
+import RegisterScreen from './RegisterScreen'
+import LoginScreen from './LoginScreen'
 
-
-
-const SignScreen = (props)=>{
-
-   const [email, setEmail] = useState("");
-   const [password,setPassord] = useState("");
-   const dispatch = useDispatch();
-   const userSignIn = useSelector(state => state.userSignIn);
+const SignScreen = () => {
    
-    const handleSubmit = async (e)=>{
-       e.preventDefault();
-       
-      dispatch(signin(email,password))
-    }
-
-    return <>
-    <div className="add-product">
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email" >Email : </label>
-                <input type="email" name="email" onChange={(e)=>setEmail(e.target.value)} />
-            </div>
-            <div>
-                <label htmlFor="password" >Password : </label>
-                <input type="password" name="password" onChange={(e)=>setPassord(e.target.value)} />
-            </div>
-            <div className="signin-links">
-                <button type="submit" >Sign In</button>
-                <Link to="/register">Create new Account</Link>
-            </div>
-        </form>
-    </div>    
-    </>
+    return (
+        <div className="register" >
+            <section className="img-container" >
+                <img src="../img.jpg" alt="welcome page" />
+            </section>
+            <Route path="/register" component={RegisterScreen}  />
+            <Route path="/signin"   component={LoginScreen}     />
+            
+        </div>
+    )
+    
 }
-export default SignScreen;
+
+export default SignScreen

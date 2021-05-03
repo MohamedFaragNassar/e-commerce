@@ -1,0 +1,244 @@
+.make-order {
+  width: 100%;
+  display: flex;
+  
+}
+
+.order-items img {
+  width: 100px;
+  height: 50px;
+}
+
+.order-items {
+  margin-top: 30px;
+  min-width: 70%;
+  height: max-content;
+  margin-left: auto;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 3px 5px 0 rgba(0, 0, 0, 0.07);
+  background: #eeeeee;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.order-items ul li {
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  min-height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+  border-top: 2px solid #008891;
+  background: white;
+}
+
+.order-items h3 {
+  margin: auto;
+  width: fit-content;
+}
+
+.order-items select {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  border: 1px solid #ddd;
+  background: transparent;
+}
+
+.shipping-select {
+  min-width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.total-price {
+  width: fit-content;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.shipping-select select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  margin-right: auto;
+}
+
+.shipping,
+.payment {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: auto;
+}
+.payment {
+  margin-top: 20px;
+}
+
+.continue {
+  width: 70%;
+  padding: 15px;
+  background: #00587a;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  margin-top: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.continue:hover {
+  background: #008891;
+}
+
+.preview-order {
+  display: flex;
+  width: 100%;
+
+}
+.order-item-price{
+  width: 30%;
+  text-align: left;
+}
+.order-item-name{
+  width: 15%;
+  text-align: left;
+  word-break: break-all;
+
+}
+.order-item-qty{
+  width: 10%;
+  text-align: left;
+}
+.place-order {
+  width: 30%;
+  padding: 10px;
+  height: fit-content;
+  border: 1px solid #0f3057;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.place-order table {
+  margin: auto;
+}
+.place-order button {
+  width: 100%;
+}
+.place-order table td {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.first {
+  padding: 20px 50px 20px 0px;
+}
+
+.preview-header {
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 25px;
+}
+
+/*my orders*/
+
+.myorders {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0;
+  min-width: 770px;
+}
+.manage-orders table {
+  width: 100%;
+  padding: 10px;
+}
+.manage-orders  table  tr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05), 0 3px 5px 0 rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+  height: 60px;
+  background: white;
+  margin-top: 10px;
+}
+
+.manage-orders table tr td {
+  margin: auto 10px;
+  text-align: center
+}
+
+.view-order-details {
+  font-size: 20px;
+  color: #0f3057;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+}
+
+.order-payment {
+  width: max-content;
+  margin: auto;
+  margin-bottom: 0 auto 25px auto;
+}
+
+.order-payment span,
+.order-payment div {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.order-payment div {
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid #00587a;
+  color: red;
+  width: fit-content;
+}
+
+.order-shipping {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order-shipping h3{
+  margin: 15px 0;
+}
+
+
+.manage-orders td {
+  text-align: center;
+}
+
+.manage-orders .true {
+  color: green;
+  font-size: 25px;
+}
+
+.manage-orders .false {
+  color: red;
+  font-size: 25px;
+}
+
+.deliver-btn {
+  background: transparent;
+  border-style: none;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.order-fail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,280 @@
+/*sign in */
+
+.register {
+  background: white;
+  width: 80%;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 3px 5px 0 rgba(0, 0, 0, 0.07);
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  height: 550px;
+}
+
+.img-container {
+  min-width: 50%;
+  width: 50%;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.register img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.register form {
+  width: 50%;
+  height: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.sign-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+/* guest */
+
+.ghuest {
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ghuest h3 {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--color-d2);
+  margin-top: 25px;
+}
+
+.ghuest p {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: var(--color-d2);
+  width: 90%;
+}
+
+.ghuest-text {
+  width: 90%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 550;
+  color: white;
+}
+
+.ghuest-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.join-now {
+  padding: 10px;
+  width: 50%;
+  text-align: center;
+  border-radius: 30px;
+  font-size: 25px;
+  font-weight: 550;
+  color: var(--color-d2);
+  margin-bottom: 10px;
+  margin-bottom: 15px;
+  background: #fde8cd;
+}
+
+.join-now:hover {
+  background: white;
+  color: var(--color-d2);
+}
+
+/*login*/
+
+.login-form h3 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #1687a7;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.login-form div:not(#status, .loader,.loader, .fail,.success,.small,.big,.status-fail,.status-success,.status-message) {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 25px;
+  color: white;
+  font-size: 18px;
+  font-weight: 550;
+}
+
+.register div label {
+  margin-bottom: 10px;
+  color: #1687a7;
+}
+
+.login-form input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid #d3e0ea;
+  outline: none;
+  font-size: 18px;
+}
+
+.login-form input:focus,.register-form input:focus {
+  border: 2px solid #51adcf;
+}
+
+
+.login-form section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.register button {
+  padding: 10px 40px;
+  border-radius: 30px;
+  font-size: 25px;
+  font-weight: 550;
+  color: white;
+  background: #51adcf;
+  margin-bottom: 10px;
+
+}
+.register a:not(.join-now) {
+  color: #51adcf;
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.register a:not(.join-now):hover {
+  color: #1687a7;
+}
+.register button:hover {
+  background: #1687a7;
+ }
+
+.signup {
+  width: 40%;
+}
+.register-form {
+  padding: 5px;
+}
+.register-form h3 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #1687a7;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.rigster-name{
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+
+.register-form div:not(#status, .loader, .rigster-name ,.loader, .fail,.success,.small,.big,.status-fail,.status-success,.status-message) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  width: 90%;
+  margin-top: 15px;
+  color: #51adcf;
+  font-size: 18px;
+  margin: auto;
+}
+.register-form input:not(.rigster-name input) {
+  width: 95%;
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid #d3e0ea;
+  outline: none;
+  font-size: 18px;
+}
+.register-form input:not(.rigster-name input):focus{
+  border: 2px solid #51adcf;
+
+}
+.rigster-name input{
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px;
+  border: 2px solid #d3e0ea;
+  outline: none;
+  font-size: 18px;
+}
+
+.register-form section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 10px;
+}
+
+.confirm-pass {
+  position: relative;
+}
+
+.message {
+  position: absolute;
+  bottom: -10px;
+  left: 40%;
+}
+
+/* pre made account */
+.pre-made {
+  width: 50%;
+  height: 60px;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid var(--color-d2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pre-made:hover {
+  background: #51adcf;
+}
+
+.pre-made img {
+  width: 50px;
+  height: 50px;
+}
+
+.pre-made span {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 10px;
+}

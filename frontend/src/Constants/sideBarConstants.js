@@ -1,0 +1,10 @@
+export const FILTER_COMPONENT = 'FILTER_COMPONENT';
+export const SHOW_CART = 'SHOW_CART';
+
+export const SHOW_WISHLIST = 'SHOW_WISHLIST';
+export const SHOW_SHIPPING = 'SHOW_SHIPPING';
+
+
+
+export const SHOW_QUISTIONS = 'SHOW_QUISTIONS'; 
+export const HIDE_COMPONENT = 'HIDE_COMPONENT'; 
