@@ -10,9 +10,7 @@ router.post("/add", isAuth,async(req,res)=>{
     const user = req.user
     try{
 
-        const shippingInfo = await Shipping.findOne({user})
-        const shipping = shippingInfo.shippingInfo.find(info => info._id == req.body.shipping)
-        console.log(shipping)
+        const shipping = await Shipping.findById(req.body.shipping)
         const order = new Order({
             user: req.user,
             orderItems: req.body.orderItems,
@@ -69,11 +67,10 @@ router.get("/orderdetails/:id",isAuth,async(req,res)=>{
     const id = req.params.id
     try{
         const order = await Order.findById(id)
-        if(order){
-            res.send(order)
-        }else{
-            res.status(400).send("no such order")
-        }
+        const loc = await Shipping.findById(order.shipping)
+        order.shipping = loc
+        res.send(order)
+        
     }catch(error){
         console.error(error)
         res.status(500).send("error in getting order details")

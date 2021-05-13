@@ -24,7 +24,11 @@ const orderItemSchema = new mongoose.Schema({
   const orderSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     orderItems: [orderItemSchema],
-    shipping: shippingInfoSchema,
+    shipping: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'shippingInfo',
+      required: true
+    },
     payment: {type:String,required:true},
     itemsPrice: { type: Number },
     tax: { type: Number,required:true },

@@ -4,7 +4,7 @@ import {deleteShipping,makeDefault} from '../../Actions/shippingActions'
 const AdressCard = ({location,type}) => {
 
     const dispatch = useDispatch()
-    console.log(location)
+    
     const handleDeleteAdress = ()=>{
         dispatch(deleteShipping(location._id))
     }

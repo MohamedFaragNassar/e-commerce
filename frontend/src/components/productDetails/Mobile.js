@@ -1,6 +1,6 @@
 import React, {useEffect,  useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import {getWishlist,addWishlist,deleteWhishlist} from "../../Actions/wishlistActions"
+import {addWishlist,deleteWhishlist} from "../../Actions/wishlistActions"
 import {addToCart} from "../../Actions/cartActions"
 import {modifyDate} from '../../helpers/helpers'
 import ProductReviews from "../ProductReviews"
@@ -29,7 +29,7 @@ const MobileDetails = ({product}) =>{
         }
     
     
-  
+        const specs = product?.specifications
     
         let checkWhishlist 
 
@@ -38,7 +38,6 @@ const MobileDetails = ({product}) =>{
             
         }
 
-       
        useEffect(() => {
            setImage("../"+product.mainImage)
         }, [])
@@ -75,10 +74,10 @@ const MobileDetails = ({product}) =>{
                     {product.category ==="mobile" || product.category ==="laptops" ?
                         <li> <span>Storage : </span><div>{product.storage} GB</div></li>: null}
                     {product.category!="mobile"&&product.category!="laptops" &&
-                        product?.specifications.splice(0,4).map(e => 
+                        specs.slice(0,4).map(e => 
                             <li key={e.value}> <span>{e.spec} : </span><div>{e.value}</div></li>
                         )
-                    }
+                    } 
                </ul>
                {product.onSale ? <div className="sale-details" >
                     <i className="far fa-badge-dollar"></i>

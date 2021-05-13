@@ -13,18 +13,18 @@ const AddShipping = ({node,close}) => {
     
     const dispatch = useDispatch()
 
-    const {addLoading,addError,add} = useSelector(state => state.shipping)
+    const {addLoading,addError,add} = useSelector(state => state.addShipping)
 
     
     const handleAddShipping = async(e) => {
         e.preventDefault()
-        dispatch(addShipping({
+        dispatch(addShipping(
             name,
             country,
             city,
             address,
             postalcode
-        }))
+        ))
         close()
      }
 

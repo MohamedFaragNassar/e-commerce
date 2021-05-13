@@ -17,7 +17,7 @@ const ProductForm = ({product,close})=>{
 
   const dispatch = useDispatch()
     
-  const [pattern, setAddPattern] = useState(product?.category)
+  const [pattern, setAddPattern] = useState(product?.category || "mobile")
   const [model,SetModel] = useState("mobile")
 
   const [productName,setProductName] = useState(product?.productName)

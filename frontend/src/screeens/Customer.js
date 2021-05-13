@@ -1,14 +1,12 @@
 import React from 'react';
-import {Route,BrowserRouter,Link } from 'react-router-dom';
+import {Route,Link } from 'react-router-dom';
 import Main from "../screeens/MainScreen"
 import AddProduct from '../screeens/AddProduct';
 import ProductDetails from '../screeens/ProductDetails';
 import MobileScreen from '../screeens/MobileScreen';
-import ManageScreen from "../screeens/ManageScreen";
 import UpdateProduct from "../screeens/UpdateProduct";
 import SignScreen from "./SignScreen";
-import RegisterScreen from "../screeens/RegisterScreen";
-import {useDispatch, useSelector} from 'react-redux';
+import { useSelector} from 'react-redux';
 import SignedUser from "../components/signedUser"
 import UnSignedUser from "../components/unSignedUser"
 import Sidebar from "../components/sidebarComponents/Sidebar"
@@ -21,24 +19,20 @@ import Profile from "../screeens/Profile"
 import MyOrders from "../screeens/MyOrders"
 import OrderDetails from "../screeens/OrderDetails"
 import FilteredProducts from '../screeens/FilteredProducts'
-import AdminPanel from '../screeens/admin/AdminPanel'
 import MainMenu from '../components/MainMenu'
 import { useState } from 'react';
 import {useClickToClose} from '../helpers/CTC'
 import ShowCart from '../components/sidebarComponents/ShowCart';
 import Wishlist from '../components/sidebarComponents/Wishlist';
 import { useEffect } from 'react';
-import { getWishlist } from '../Actions/wishlistActions';
 
 const Customer = (props) => {
     
-    const {wishlistProducts}= useSelector(state => state.wishlist)
     const userSignIn = useSelector(state => state.userSignIn);
     const {userData} = userSignIn
     const [isOpen,setIsOpen] = useState(false)
     const node = useClickToClose(()=>setIsOpen(false),"#mainmenu")
-    const dispatch = useDispatch()
-    console.log(window.location.pathname.includes("product"))
+   
 
     const checkSideBar = () => {
         const width = window.screen.width > 800

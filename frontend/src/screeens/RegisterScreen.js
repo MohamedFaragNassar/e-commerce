@@ -5,6 +5,7 @@ import Status from "../components/Status"
 import {useHistory} from "react-router-dom"
 import {CLEAR_REGISTER,USER_REGISTER_DATAERROR} from "../Constants/userConstants"
 import {Link} from 'react-router-dom'
+import Spinner from "../components/Spinner"
 
 const RegisterScreen = ()=>{
 
@@ -16,7 +17,7 @@ const RegisterScreen = ()=>{
     const [confirmPassword,setConfirmPassword] = useState()
     
    
-    const {error,dataError , user}= useSelector(state => state.registerUser)
+    const {loading,error,dataError , user}= useSelector(state => state.registerUser)
     
 
     const dispatch = useDispatch()
@@ -85,8 +86,7 @@ const RegisterScreen = ()=>{
                     <button onClick={(e)=>handleRegister(e)} >Sign up</button>
                     <Link to="/signin" >Already have Account? sign in </Link>
                 </section>
-            
-              {/*   {loading ? <Spinner /> : null} */}
+                {loading ? <Spinner /> : null} 
                 {error?<Status isOpen={true} message={"Ops... Somthing went wrong, please try again"} status="fail" size="small" />:null}
                 {dataError ? <Status isOpen={true} message={dataError} status="fail" size="small" /> : null  }
             </form>

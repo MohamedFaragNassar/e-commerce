@@ -32,18 +32,20 @@ const Preview = () =>{
                 
                 <div className="place-order">
                     <table>
-                        <tr>
-                            <td className="first">Items Price : </td>
-                            <td>$ {initialOrder.itemsPrice}</td>
-                        </tr>
-                        <tr>
-                            <td className="first">Shipping Price : </td>
-                            <td>$ {shippingPrice}</td>
-                        </tr>
-                        <tr>
-                            <td className="first">Tax Price : </td>
-                            <td>$ {taxPrice}</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <td className="first">Items Price : </td>
+                                <td>$ {initialOrder.itemsPrice}</td>
+                            </tr>
+                            <tr>
+                                <td className="first">Shipping Price : </td>
+                                <td>$ {shippingPrice}</td>
+                            </tr>
+                            <tr>
+                                <td className="first">Tax Price : </td>
+                                <td>$ {taxPrice}</td>
+                            </tr>
+                        </thead>
                     </table>
                     <button onClick={()=>handleMakeOrder({
                          orderItems: initialOrder.orderItems,
@@ -59,7 +61,7 @@ const Preview = () =>{
                     <div >
                         <ul>
                             {initialOrder.orderItems.map(item =>
-                                <li>
+                                <li key={item.name}>
                                     <img src={item.image} />
                                     <span className="order-item-name">{item.name}</span>
                                     <span className="order-item-qty">Qty : {item.qty}</span>

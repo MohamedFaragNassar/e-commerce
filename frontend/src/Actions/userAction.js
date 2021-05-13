@@ -49,7 +49,7 @@ const registerUser = (user) => async(dispach)=>{
 const signin = (email,password) => async (dispatch) => {
     dispatch({type:USER_SIGNIN_REQUIST})
     try{
-        console.log("sign in action")
+       
         const config = {
             headers: {
               'Content-Type': 'application/json',
@@ -65,6 +65,27 @@ const signin = (email,password) => async (dispatch) => {
             /* setTimeout(()=>{
               dispatch({type:USER_LOGOUT})
             },5000) */
+        }
+    }catch(error){
+        dispatch({type:USER_SIGNIN_FAIL, payload: error})
+    }
+ } 
+ 
+
+const readyAccount = (type) => async (dispatch) => {
+    dispatch({type:USER_SIGNIN_REQUIST})
+    try{
+       
+        const { data } = await Axios.post("/api/users/readyaccount",{type}, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+        })
+        if(data != "incorrect password" && data != "Email not found"){
+          dispatch({type:USER_SIGNIN_SUCCESS,payload:data})
+          Cookie.set("userInfo", JSON.stringify(data))
+        }else{
+            dispatch({type:USER_SIGNIN_DATAERROR,payload:data})
         }
     }catch(error){
         dispatch({type:USER_SIGNIN_FAIL, payload: error})
@@ -191,4 +212,4 @@ const changepassword = (old,password) => async (dispatch,getState) => {
   }
 
  export  {signin, logout,getUserDetails,getUsers,updateProfile,deleteUser
-        ,registerUser,updateImage,changepassword}
+        ,registerUser,updateImage,changepassword,readyAccount}

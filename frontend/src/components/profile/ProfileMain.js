@@ -19,7 +19,7 @@ import { getShipping } from '../../Actions/shippingActions'
     return <div className="profile-main">
         <div className="profile-main-top">
             <ProfileCard userProfile={userProfile} />
-            {shippingInfo&&<DefaultAddress  location={shippingInfo[0]} />}
+            {shippingInfo&&<DefaultAddress  location={shippingInfo?.find(e => e.isDefault)} />}
         </div>
         <Addresses address={shippingInfo} />
     </div>

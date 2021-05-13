@@ -4,13 +4,15 @@ import {updateProfile} from "../../Actions/userAction"
 import Spinner from "../Spinner"
 import Status from "../Status"
 import { useState } from 'react'
+import { useEffect } from 'react'
+
 
 function EditProfile({node}) {
     
     const {userProfile} =  useSelector(state => state.userDetails)
-    const [firstName,setFirstName] = useState(userProfile?.firstName)
-    const [lastName,setLastName] = useState(userProfile?.lastName)
-    const [email,setEmail] = useState(userProfile?.email)
+    const [firstName,setFirstName] = useState()
+    const [lastName,setLastName] = useState()
+    const [email,setEmail] = useState()
     
 
     
@@ -30,8 +32,16 @@ function EditProfile({node}) {
        
     }
 
+    
+
+    useEffect(() => {
+      setFirstName(userProfile?.firstName)
+      setLastName(userProfile?.lastName)
+      setEmail(userProfile?.email)
+    }, [userProfile])
+
     return <>
-        <div ref={node} id="editprofilr" className=" edit-profile add-shipping add-product">
+        <div ref={node} id="editprofilr" className=" edit-profile  add-product">
             <h2>Personal Information</h2>
             <form onSubmit = {(e)=>handleUpdateProfile(e)} >
                 <div className="edit-profile-inputs">

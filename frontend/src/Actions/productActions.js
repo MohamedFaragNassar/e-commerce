@@ -83,7 +83,6 @@ const getProductDetails = (id) => async(dispatch)=>{
   dispatch({type:GET_PRODUCT_DETAILS_REQUEST})
     try{
       const {data} = await Axios.get(`/api/product/${id}`)
-      console.log(data)
       dispatch({type:GET_PRODUCT_DETAILS_SUCCESS,payload:data})
     }catch(error){
       dispatch({type:GET_PRODUCT_DETAILS_FAIL,payload:error})

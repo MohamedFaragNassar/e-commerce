@@ -9,7 +9,8 @@
   justify-content: space-between;
   background: white;
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05), 0 3px 5px 0 rgba(0, 0, 0, 0.02);
-  height: 50vh;
+  min-height: 50vh;
+  height: auto;
 }
 
 .edit-profile form{

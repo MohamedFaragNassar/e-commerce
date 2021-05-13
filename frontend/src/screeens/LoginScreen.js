@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useState} from "react"
 import { Link , useHistory} from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
-import {signin} from "../Actions/userAction"
+import {readyAccount, signin} from "../Actions/userAction"
 import Spinner from "../components/Spinner"
 import Status from "../components/Status"
 
@@ -27,6 +27,10 @@ const SignScreen = (props)=>{
       e.target.reset()
     }
     
+    const handlSignin = (type) => {
+        dispatch(readyAccount(type))
+    }
+
     useEffect(() => {
         if(window.location.pathname.includes("order")){
             //setLocation("/orders")
@@ -64,6 +68,17 @@ const SignScreen = (props)=>{
                 {loading ? <Spinner />:null}
                 {error ? <Status isOpen={true} status="fail" message="Ops... somthing went wrong, please try again" size="small" />:null}
                 {dataError ?  <Status isOpen={true} status="fail" message={dataError} size="small" />:null }
+                
+                <div className="ready-accounts">
+                    <div onClick={()=>handlSignin("client")} className="pre-made">
+                        <img src="account.png" />
+                        <span>Client Account</span>
+                    </div>
+                    <div onClick={()=>handlSignin("admin")} className="pre-made">
+                        <img src="account.png" />
+                        <span>Admin Acoount</span>
+                    </div>
+                </div>
         </form>
     </>
 }

@@ -12,7 +12,7 @@ function getWishListReducer(state={wishlistProducts:[]},action){
         case GET_WISHLIST_FAIL :
             return {whislistLoading:false , whishlistError: action.payload}
         case ADD_WISHLIST_SUCCESS :
-            return {wishlistProducts: [...state.wishlistProducts,action.payload]}
+            return {wishlistProducts: [...state?.wishlistProducts,action.payload]}
         case DELETE_WISHLIST_SUCCESS:
             return {wishlistProducts:[...state.wishlistProducts.filter(e => e._id != action.payload)]}    
         case CLEAR_WISHLIST:

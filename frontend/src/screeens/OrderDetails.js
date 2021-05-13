@@ -59,6 +59,7 @@ const OrderDetails = (props)=>{
                 
                 {!order.isPaid ?<div className="place-order">
                     <table>
+                        <tbody>
                         <tr>
                             <td className="first">Items Price : </td>
                             <td>$ {order.itemsPrice}</td>
@@ -75,6 +76,7 @@ const OrderDetails = (props)=>{
                             <td className="first">Total Price : </td>
                             <td>$ {order.totalPrice}</td>
                         </tr>
+                        </tbody>
                     </table>
                     {paypalButton ? <PayPalButton amount={order.totalPrice} onError={handlePaymentError}
                      onSuccess={handlePaymentSuccess}/> : <div>loading...</div>}
@@ -91,8 +93,8 @@ const OrderDetails = (props)=>{
                     <div >
                         <ul>
                             {order.orderItems.map(item =>
-                                <li>
-                                    <img src={item.image} />
+                                <li key={item.name}>
+                                    <img src={item.image} style={{marginRight:10+"px"}} />
                                     <span className="order-item-price">Name : {item.name}</span>
                                     <span className="order-item-price">Qty : {item.qty}</span>
                                     <span className="order-item-price">Price : {item.price} * {item.qty} = $ {item.price * item.qty}</span>

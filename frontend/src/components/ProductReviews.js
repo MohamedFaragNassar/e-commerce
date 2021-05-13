@@ -20,7 +20,9 @@ const ProductReviews = ({id}) => {
     const [rating, setRating] = useState(1)
     const [comment, setComment] = useState()
     
-    
+    const commentsNum = reviews?.filter(e => e.comment != null).length 
+
+   
    
     const calcRating = () =>{
         if(reviews?.length > 0){
@@ -85,7 +87,7 @@ const ProductReviews = ({id}) => {
             </div>
             
         </div>
-        {reviews?.length > 0 ? <div className="comments review-products">
+        {reviews?.length > 0 && commentsNum > 0 ? <div className="comments review-products">
             <div className="product-discr-header review-header">What customrs Said about this product</div>
              {reviews?.map(review => 
                 review.comment?<div key={review.user._id} className="comment">
@@ -94,7 +96,7 @@ const ProductReviews = ({id}) => {
                         <div className="comment-owner" >{`${review.user.firstName} ${review.user.lastName}`}</div>
                         <div className="comment-content">{review.comment}</div>
                     </div>
-                {userData.userID === review.user._id &&<button onClick={()=>handleDelComment(review._id)}><i className="fas fa-trash-alt"></i></button>}
+                {userData?.userID === review.user._id &&<button onClick={()=>handleDelComment(review._id)}><i className="fas fa-trash-alt"></i></button>}
                </div>
                 :null)}   
         </div>:null}

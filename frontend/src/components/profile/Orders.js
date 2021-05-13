@@ -27,15 +27,15 @@ const Orders = () =>{
     const orders = useSelector(state => state.getOrders)
     const {loading, error, myOrders} = orders
 
-    console.log(orders)
+    
 
     useEffect(() => {
        dispatch(getMyorders())
     }, [])
 
-        console.log(orders)
+       
     return<>
-        { loading ? <div>loading...</div> : error ? <div>{error.message}</div> : myOrders ? <>
+        { loading ? <div>loading...</div> : error ? <div>{error.message}</div> : myOrders? <>
         <div className="manage-products my-orders">
             <div className="manage-products-header">
                 <span>My Orders</span></div>
@@ -68,7 +68,7 @@ const Orders = () =>{
                 </div>
         </div> 
 
-    </>: <div></div>} 
+    </>: <div>You have no orders yet</div>} 
 
     <Modal isOpen ={modalOpen} close={()=>setModalOpen(false)} 
         header="Cancelling Order" message="Are you sure want to cancel this order ?!" handler={()=>handleCancel(id)}/> 

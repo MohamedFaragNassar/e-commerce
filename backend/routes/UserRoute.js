@@ -50,6 +50,31 @@ router.post("/signin", async (req,res)=>{
     }
  })
 
+ router.post("/readyaccount",async(req,res) => {
+     try{
+         const type = req.body.type
+         const email = type == "admin" ? "mfnemo8@yahoo.com" : "mfnemo65@yahoo.com"
+         const signedUser = await User.findOne({email})
+         const auth = await bcrypt.compare("123", signedUser.password)
+         if(auth){
+            res.send({
+                userID: signedUser._id,
+                firstName: signedUser.firstName,
+                lastName: signedUser.lastName,
+                isAdmin: signedUser.isAdmin,
+                userImage:signedUser.image,
+                token: getToken(signedUser)
+            })
+            
+        }else{
+            res.send("incorrect password")
+        }
+
+     }catch(error){
+        res.status(500).send("Somthing went wrong when trying to sign you in")
+    }
+})
+
 router.post("/register",async(req,res)=>{
     const checkEmail = await User.findOne({email:req.body.email})
     if(checkEmail){

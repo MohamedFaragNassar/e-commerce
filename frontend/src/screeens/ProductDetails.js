@@ -10,7 +10,7 @@ const ProductDetails = (props)=>{
    const {loading,error,product} = productDetails
    const dispatch = useDispatch()
 
-      console.log(product)
+     
 
    useEffect(() => {
       const id = props.match.params.id

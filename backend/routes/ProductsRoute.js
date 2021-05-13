@@ -191,7 +191,6 @@ router.get("/product/:id", async (req,res)=>{
         console.log(err)
     }
     
-    console.log(product)
      res.send(product)
 
 })

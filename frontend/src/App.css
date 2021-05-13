@@ -132,6 +132,7 @@ button {
   align-items: center;
   cursor: pointer;
   margin-left: auto;
+  
 }
 .nav-user:hover {
   background: #f4f4f4;
@@ -402,6 +403,10 @@ button {
   .madal {
     top: 60%;
   }
+  .add-pattern div:not(.spec-body, .key-val, .showSpec div){
+    width: 90%;
+    
+  }
 }
 
 @media (max-width: 800px) {
@@ -431,6 +436,7 @@ button {
   .specs-btn-price {
     justify-content: space-between;
     margin-left: 0;
+    width: 100%;
   }
 
   .specs-btn-price button,
@@ -439,6 +445,7 @@ button {
     width: 45%;
     margin-left: 0;
     text-align: center;
+    font-size: 18px;
   }
   .specs ul {
     margin-left: 20px;
@@ -513,10 +520,11 @@ button {
   .product-price-btn{
     width: 90%;
   }
-  .specs-btn-price{
-    width: 60%;
-    margin: auto;
+  
+  .pre-made{
+    width: 95%;
   }
+  
 }
 
 @media (max-width: 800px) {
@@ -567,6 +575,9 @@ button {
   .main{
     margin-left: 0;
   }
+  .register{
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -597,9 +608,23 @@ button {
   }
 
   .add-shipping {
-    margin-top: 20px;
+    margin-top: 50px;
+    width: 90%;
   }
 
+  .edit-profile{
+    height: auto;
+  }
+  .edit-profile h2{
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  .add-btn{
+    padding: 10px 38px;
+  }
+
+  
   .wrapper{
     display: none;
   }
@@ -648,6 +673,25 @@ button {
     width: 100%;
   }
   
+  .img-container{
+    display: none;
+  }
+  .register form{
+    width: 100%;
+  }
+  .register{
+    width: 100%;
+  }
+  .login-form h3{
+    font-size: 25px;
+  }
+  .register button{
+    font-size: 18px;
+  }
+
+  .login-form div:not(#status, .loader, .loader, .fail, .success, .small, .big, .status-fail, .status-success, .status-message){
+    width: 90%;
+  }
   
 
 

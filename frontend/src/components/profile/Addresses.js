@@ -13,7 +13,7 @@ const Addresses = ({address}) => {
                 <span>Add New</span>
             </button>
             {address&& address.map(loc => 
-                <AdressCard location={loc} />    
+                <AdressCard location={loc} key={loc._id} />    
             )}
         </div>
         {isOpen&&<AddShipping node={node} close={()=>setIsOpen(false)} />}

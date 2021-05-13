@@ -28,7 +28,7 @@ const Password = () => {
         }
     }
     return <>
-        <div className=" edit-profile add-shipping add-product">
+        <div className=" edit-profile  add-product">
             <h2>Changing Password</h2>
             <form id="change_password_form" onSubmit = {(e)=>handleUpdatePassword(e)} >
                 <div className="edit-profile-inputs">
