@@ -113,11 +113,15 @@ const ProductForm = ({product,close})=>{
     }
 
     const handleAddSpec = () =>{
-      setSpecifications(specifications?[...specifications,{spec,value}]:[{spec,value}])
-     /*  const inputs = document.querySelector(".key-value").querySelector("input")
+      if(spec && value){
+        setSpecifications(specifications?[...specifications,{spec,value}]:[{spec,value}])
+      }
+      const inputs = document.querySelectorAll(".key-value")
+      setSpec(null)
+      setValue(null)
       inputs.forEach(e => 
-        e.reset()  
-      ) */
+        e.value = null 
+      ) 
     }
 
     const handleDelSpec = (spec) => {
@@ -205,11 +209,11 @@ const ProductForm = ({product,close})=>{
                   <div>
                       <div>
                           <label>Spec : </label>
-                          <input onChange={(e)=>setSpec(e.target.value)} type="text"  />
+                          <input className="key-value" onChange={(e)=>setSpec(e.target.value)} type="text"  />
                       </div>
                       <div>
                           <label>Value : </label>
-                          <input type="text" onChange={(e)=>setValue(e.target.value)} />
+                          <input className="key-value" type="text" onChange={(e)=>setValue(e.target.value)} />
                       </div>
                   </div>
                   <span className="add-spec" onClick={()=>handleAddSpec()}><i className="fas fa-plus-square"></i></span>

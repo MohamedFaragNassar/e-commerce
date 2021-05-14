@@ -7,6 +7,8 @@ import {addToCart} from "../Actions/cartActions"
 
 
 const ShowProduct = ({product})=>{
+
+    console.log(product)
     
     const {userData} = useSelector(state => state.userSignIn)
     const {wishlistProducts} = useSelector(state => state.wishlist)
@@ -52,7 +54,7 @@ const ShowProduct = ({product})=>{
     return <>
         <div onMouseLeave={handleHideWhishlist} 
              onMouseEnter={(e)=>handleShowWhishlist(e)} className="product-card">
-            <Link to={`/product/${product._id}`}><img src={"../"+product.mainImage} alt = "product"/></Link>
+            <Link to={`/product/${product._id}`}><img src={product.mainImage} alt = "product"/></Link>
             <button onClick={()=> addProductToCart(product)} className="add-to-cart">
                 <img src="../assets/cart.svg" />
                 <span>Add To Cart</span>

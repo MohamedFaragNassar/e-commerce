@@ -9,7 +9,7 @@
   margin-top: 20px;
   display: flex;
   align-items: center;
-  height: 550px;
+  min-height: 550px;
 }
 
 .img-container {

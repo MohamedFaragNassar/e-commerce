@@ -39,7 +39,7 @@ const MobileDetails = ({product}) =>{
         }
 
        useEffect(() => {
-           setImage("../"+product.mainImage)
+           setImage(product.mainImage)
         }, [])
 
       
@@ -50,7 +50,7 @@ const MobileDetails = ({product}) =>{
                 <div className="cover"><img className="cover-img" src={image} alt="product" /></div>
                 <div className="other-images">
                     {images.map(img => (
-                        <img key={img} onClick={()=> setImage("../"+img)} src={`../${img}`}/>
+                        <img key={img} onClick={()=> setImage(img)} src={img}/>
                     ))}
                 </div>
             </div>

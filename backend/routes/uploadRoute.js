@@ -1,7 +1,13 @@
 const multer = require("multer")
 const express = require("express")
 const {isAuth} = require("../Authentication")
+const cloudinary = require('cloudinary').v2;
 
+cloudinary.config({ 
+    cloud_name: 'dt3fknrkp', 
+    api_key: '678345384481827', 
+    api_secret: 'XAFHdzWuHvyt_fdWseKhSFGUDdY' 
+  });
 
 const router = express.Router();
 
@@ -33,17 +39,22 @@ const fileFilter = (req,file,cb)=>{
     }) ;
     
 
-    router.post("/many",isAuth,upload.array("images"),(req,res)=>{
-        if(req.files){
+    router.post("/many",isAuth,upload.array("images"),async(req,res)=>{
             const files = req.files
             let fileNames = []
+          
             for(let i=0;i<files.length;i++){
-                fileNames.push(files[i].filename)
+                await cloudinary.uploader.upload(files[i].path, function(error, result) {
+                    if(error){
+                        console.log(error)
+                    }else{
+                        fileNames.push(result.url)
+                    }
+                 });
             }
+
             res.send(fileNames)
-        }else{
-            res.status(400).send("error in uploading the images")
-        }
+        
     })
 
 
@@ -51,13 +62,15 @@ const fileFilter = (req,file,cb)=>{
 
 
 router.post('/',isAuth, upload.single('image'), (req, res) => {
-    if(req.file){
-        res.send(req.file.filename)
-    }else{
-        res.status(400).send("error in uploading the image")
-    }
-    
-  })
+    cloudinary.uploader.upload(req.file.path,function(error, result) {
+        console.log(result)
+        if(error){
+            res.status(500).send(error)
+        }else{
+            res.send(result.url)
+        }
+    });
+})
 
 
   

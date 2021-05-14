@@ -18,7 +18,7 @@ const Admin = ()=>{
     
     return <>
         <ul>
-            <li><Link onClick= {()=> hideMenu()} to="/manage">Manage</Link></li>
+            <li><Link onClick= {()=> hideMenu()} to="/admin">Manage</Link></li>
             <li><Link  onClick= {(e)=> HandleLogout(e)}  to="/">Log out</Link></li>
        </ul>
     </>
