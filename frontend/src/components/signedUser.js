@@ -34,7 +34,7 @@ const SignedUser = ()=>{
 
     return <>
         <div ref={userNav} className="nav-user">
-            <img src={`../${userProfile? userProfile.userImage:""}`} alt=""/>
+            <img src={`${userProfile? userProfile.userImage:""}`} alt=""/>
             <button onClick={()=>toggleShowMenu()} className="nav-user-details">v</button>
         </div>
         <div ref={domNode}  id='user-menu' className="nav-user-menu">
