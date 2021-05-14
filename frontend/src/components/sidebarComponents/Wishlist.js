@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { addToCart } from "../../Actions/cartActions"
 import {getWishlist,clearWishList,deleteWhishlist} from "../../Actions/wishlistActions"
 import Spinner from '../../components/Spinner'
 
@@ -7,9 +8,11 @@ import Spinner from '../../components/Spinner'
 
 const ShowWishlist = ()=>{
     const dispatch = useDispatch()
-     const {wishlistProducts}= useSelector(state => state.wishlist)
-     const {loading,error} = useSelector(state => state.clearWhishlist)
-     const x = wishlistProducts?.length;
+    const {wishlistProducts}= useSelector(state => state.wishlist)
+    const {loading,error} = useSelector(state => state.clearWhishlist)
+    const x = wishlistProducts?.length;
+    
+   
    
     const handleClear = () =>{
        dispatch(clearWishList())
@@ -19,6 +22,10 @@ const ShowWishlist = ()=>{
         dispatch(deleteWhishlist(id))
         dispatch(getWishlist())
 
+    }
+
+    const addProductToCart = (product)=>{
+        dispatch(addToCart(product))
     }
 
     useEffect(() => {
@@ -44,7 +51,9 @@ const ShowWishlist = ()=>{
                             </div>
                             <div className="lower-sec">
                                 <div className="side-item-price" >${product.price}</div>
-                                <button className="side-item-cart" ><img src="./assets/cart.svg" /></button>
+                                <button className="side-item-cart"  onClick={()=> addProductToCart(product)} >
+                                    <img src="./assets/cart.svg" />
+                                </button>
                             </div>
                             
                         </div>

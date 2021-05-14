@@ -8,8 +8,6 @@ import {addToCart} from "../Actions/cartActions"
 
 const ShowProduct = ({product})=>{
 
-    console.log(product)
-    
     const {userData} = useSelector(state => state.userSignIn)
     const {wishlistProducts} = useSelector(state => state.wishlist)
     const dispatch = useDispatch()
