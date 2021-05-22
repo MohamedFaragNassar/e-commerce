@@ -42,7 +42,7 @@
 .side-item-name{
     font-size: 15px;
     font-weight: 600;
-    word-break: break-all;
+    word-wrap: break-word;
     
 }
 

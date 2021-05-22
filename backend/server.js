@@ -17,8 +17,9 @@ const mobile = require("./models/MobileModel");
 const path = require("path")
 
 //const mongoDB_URl = "mongodb://127.0.0.1:27017/e-commerce";
+//const mongoDB_URl = process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/e-commerce";
 const mongoDB_URl = "mongodb+srv://mnassar:nassar5050@tu-blogs.7sokl.mongodb.net/eshop?retryWrites=true&w=majority";
-//const port = process.env.port || 5000;
+
 const app = express("");
 
     

@@ -28,7 +28,7 @@ const ShowCart = ()=>{
             <ul>
                 {cartItems.map(product => 
                     <li key={product.product}>
-                        <img className="side-item-img" src={`../${product.image}`} />
+                        <img className="side-item-img" src={`${product.image}`} />
                         <div className="side-items-body">
                             <div>
                                 <div className="side-item-name" >{product.name}</div>

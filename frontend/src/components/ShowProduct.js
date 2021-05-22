@@ -52,7 +52,7 @@ const ShowProduct = ({product})=>{
     return <>
         <div onMouseLeave={handleHideWhishlist} 
              onMouseEnter={(e)=>handleShowWhishlist(e)} className="product-card">
-            <Link to={`/product/${product._id}`}><img src={product.mainImage} alt = "product"/></Link>
+            <Link className="image-link" to={`/product/${product._id}`}><img src={product.mainImage} alt = "product"/></Link>
             <button onClick={()=> addProductToCart(product)} className="add-to-cart">
                 <img src="../assets/cart.svg" />
                 <span>Add To Cart</span>
