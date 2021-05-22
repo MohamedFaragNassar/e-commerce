@@ -11,7 +11,9 @@ import {LIST_PRODUCTS_FAIL,LIST_PRODUCTS_REQUEST,LIST_PRODUCTS_SUCCESS,DELETE_PR
     DELETE_SALE_FAIL,DELETE_SALE_REQUEST,DELETE_SALE_SUCCESS,CLEAR_DELETE_SALE,
     GET_ALL_PRODUCTS_FAIL,GET_ALL_PRODUCTS_REQUEST,GET_ALL_PRODUCTS_SUCCESS,
     GET_REVIEWS_FAIL,GET_REVIEWS_REQUEST,GET_REVIEWS_SUCCESS,CLEAR_REVIEWS, ADD_PRODUCT,
-    DELETE_COMMENT_SUCCESS} from "../Constants/productConstants"
+    DELETE_COMMENT_SUCCESS,
+    ADD_SALE,
+    DELETE_SALE} from "../Constants/productConstants"
 
 function getProductsReducer(state={products:[]},action){
     switch(action.type){
@@ -38,6 +40,30 @@ function getAllProductsReducer(state={products:[]},action){
             return {loading:false , error: action.payload}
         case ADD_PRODUCT : 
             return {products:[action.payload,...state.products]}
+        case ADD_SALE: 
+            return {products:state.products.map(e => {
+                if(e._id == action.payload.id){
+                    e.onSale = true
+                    e.sale = {
+                        salePercentage:action.payload.salePercentage,
+                        salePrice: e.price - (e.price * (action.payload.salePercentage/100)) ,
+                        endDate:action.payload.endDate,
+                    }
+                    return e
+                }else{
+                    return e
+                }
+            })}
+        case DELETE_SALE: 
+            return {products:state.products.map(e => {
+                if(e._id == action.payload.id){
+                    e.onSale = false
+                    e.sale = null
+                    return e
+                }else{
+                    return e
+                }
+            })}
         case UPDATE_PRODUCT :
             const filter = state.products.filter(e => e.id != action.payload.id) 
             return {products:[action.payload.product,...filter]}

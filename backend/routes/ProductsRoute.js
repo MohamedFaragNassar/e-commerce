@@ -7,6 +7,7 @@ const Review =  require("../models/Review");
 const fs = require("fs")
 const {isAuth, isAdmin} = require("../Authentication");
 const e = require("express");
+const laptop = require("../models/LaptopModel");
 
 
 const router = express.Router();
@@ -406,6 +407,56 @@ router.delete("/review/:id",isAuth,async(req,res)=>{
         }else{
             res.status(401).send("Not Authorized action")
         }
+    }catch(err){
+        console.log(err)
+        res.status(500).send(err)
+    }
+})
+
+router.patch("/sale",isAuth,isAdmin,async (req,res) => {
+    const {id,category,salePercentage,endDate} = req.body
+    try{
+        let product
+        if(category == "mobile"){
+            product = await Mobile.findById(id)
+        }else if(category == "laptops"){
+            product = await laptop.findById(id)
+        }else{
+            product = await Product.findById(id)
+        }
+        
+        product.onSale = true
+        product.sale = {
+            salePercentage:salePercentage,
+            salePrice: product.price - (product.price * (salePercentage/100)) ,
+            endDate:endDate,
+            }
+        const updatedProduct = product.save()
+        res.send(updatedProduct)
+        
+    }catch(err){
+        console.log(err)
+        res.status(500).send(err)
+    }
+})
+
+router.patch("/sale/delete",isAuth,isAdmin,async (req,res) => {
+    const {id,category} = req.body
+    try{
+        let product
+        if(category == "mobile"){
+            product = await Mobile.findById(id)
+        }else if(category == "laptops"){
+            product = await laptop.findById(id)
+        }else{
+            product = await Product.findById(id)
+        }
+
+        product.onSale = false;
+        product.sale = null
+        const updatedProduct = product.save()
+        res.send(updatedProduct)
+        
     }catch(err){
         console.log(err)
         res.status(500).send(err)

@@ -135,10 +135,11 @@
 
 .old{
   position: absolute;
-  bottom: 50px;
-  left: 20px;
+  bottom: 40px;
+  left: 30px;
   text-decoration: line-through 2px #a20a0a;
   font-size: 20px;
   font-weight: 600;
   opacity: .6;
+  
 }
