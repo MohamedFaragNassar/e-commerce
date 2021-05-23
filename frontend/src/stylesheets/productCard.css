@@ -87,11 +87,14 @@
 }
 
 .product-name{
-    font-size: 25px;
-    font-weight: bold;
-    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    width: 90%;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 0 auto 15px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .price-review{
@@ -101,6 +104,7 @@
   align-items: flex-end;
   margin-top: auto;
   padding: 5px;
+  height: 80px;
 }
 
 .product-price{

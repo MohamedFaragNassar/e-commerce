@@ -92,7 +92,7 @@ router.get("/main", async (req,res)=>{
     
     const mobileProducts = await Mobile.find().sort([["rating",-1]]).limit(8)
     const laptopProducts = await Laptop.find().sort([["rating",-1]]).limit(8)
-    const pcProducts = await Product.find({category:"pc"}).sort([["rating",-1]]).limit(8)
+    const pcProducts = await Product.find({category:"pc hardware"}).sort([["rating",-1]]).limit(8)
     const homeProducts = await Product.find({category:"home devices"}).sort([["rating",-1]]).limit(8)
     const other = await Product.find({category:"other"}).sort([["rating",-1]]).limit(8)
     if(mobileProducts && laptopProducts){
@@ -341,8 +341,6 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
             price: Number(req.body.price),
             specifications: req.body.specifications,
             discription: req.body.discription,
-            mainImage: req.body.image,
-            images: [...req.body.images],
         },{useFindAndModify:false})
     }
     

@@ -84,20 +84,26 @@
 
 .specs ul li {
   display: flex;
-  padding: 20px;
-  width: 60%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  min-width: 70%;
+  max-width: 80%;
 }
 
 .specs ul li div {
-  position: absolute;
-  left: 200px;
   font-size: 15px;
   font-weight: 600;
+  width: 50%;
+  word-wrap: break-word;
 }
 
 .specs ul li span {
   font-size: 15px;
   font-weight: 600;
+  width: 50%;
+  word-wrap: break-word;
+
 }
 
 .specs-btn-price div {

@@ -7,6 +7,7 @@ import Spinner from "../components/Spinner"
 import Status from "../components/Status"
 
 const EditProfile = () =>{
+    
     const [firstName,setFirstName] = useState()
     const [lastName,setLastName] = useState()
     const [email,setEmail] = useState()
@@ -59,7 +60,7 @@ const EditProfile = () =>{
             <h2>Personal Information</h2>
             <form onSubmit = {(e)=>handleUpdateProfile(e)} >
                 <div className="add-pattern">
-                    <div><span>First Name : </span> <input onChange={(e)=>setFirstName(e.target.value)} type="text" name="firstName" /></div>
+                    <div><span>First Name : </span><input onChange={(e)=>setFirstName(e.target.value)} type="text" name="firstName" /></div>
                     <div><span>Last Name : </span> <input onChange={(e)=>setLastName(e.target.value)} type="text" name="lastName" /></div>
                     <div><span>Change Password : </span><input onChange={(e)=>setPassword(e.target.value)} type="password" name="password"   /></div>
                     <div><span>Confirm Password : </span><input onChange={(e)=>setConfirmPassword(e.target.value)} type="password" name="confirmPassword"   /></div>

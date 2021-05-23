@@ -692,8 +692,14 @@ button {
   .login-form div:not(#status, .loader, .loader, .fail, .success, .small, .big, .status-fail, .status-success, .status-message){
     width: 90%;
   }
-  
 
+  .search-form{
+    width: 80%;
+  }
+  
+  .show-products{
+    grid-gap: 5px;
+  }
 
   /* .add-pattern div {
     flex-direction: column;

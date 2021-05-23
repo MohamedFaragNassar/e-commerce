@@ -54,7 +54,9 @@ const Customer = (props) => {
                 <div className="navigation">
                     <div className="nav-1">
                         <div className="logo">
-                            <button onClick={()=>setIsOpen(true)} className="hide menu-btn"><i className="fas fa-bars"></i></button>
+                            <button onClick={()=>setIsOpen(true)} className="hide menu-btn">
+                                <i className="fas fa-bars"></i>
+                            </button>
                             <Link className="name" to="/">Electronices Shop</Link>
                             {isOpen&&<MainMenu node={node}/>}
                         </div>
