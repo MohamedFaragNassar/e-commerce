@@ -47,10 +47,9 @@ const AddProducts = (product,model) => async(dispatch,getState) => {
             Authorization: `Bearer ${userData.token}`,
             }
         })
-        dispatch({type:ADD_PRODUCTS_SUCCESS, payload:data})
-        console.log(data)
-        if(data == "success"){
-          dispatch({type:ADD_PRODUCT, payload:product})
+        dispatch({type:ADD_PRODUCTS_SUCCESS, payload:"success"})
+        if(data.product){
+          dispatch({type:ADD_PRODUCT, payload:data.product})
         }
         setTimeout(()=>{
           dispatch({type:CLEAR_ADD_PRODUCT})
@@ -109,7 +108,7 @@ const updateProduct = (model,id,product) => async(dispatch,getState)=>{
           }
       })
       dispatch({type:UPDATE_PRODUCTS_SUCCESS, payload:data})
-      dispatch({type:UPDATE_PRODUCT,payload:{id,product}})
+      dispatch({type:UPDATE_PRODUCT,payload:data.product})
     }catch(error){
     dispatch({type:UPDATE_PRODUCTS_FAIL,payload:error})
   }

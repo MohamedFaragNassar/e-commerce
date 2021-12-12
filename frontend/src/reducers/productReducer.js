@@ -65,8 +65,8 @@ function getAllProductsReducer(state={products:[]},action){
                 }
             })}
         case UPDATE_PRODUCT :
-            const filter = state.products.filter(e => e.id != action.payload.id) 
-            return {products:[action.payload.product,...filter]}
+            const filter = state.products.filter(e => e._id != action.payload._id) 
+            return {products:[action.payload,...filter]}
         case DELETE_PRODUCTS :
             return {loading:false, products:state.products.filter(product => {return product._id != action.payload})}
         default :

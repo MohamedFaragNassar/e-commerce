@@ -24,6 +24,7 @@
 @import "./stylesheets/profile.css";
 @import "./stylesheets/Card.css";
 @import "./stylesheets/badge.css";
+@import "./stylesheets/checkout.css";
 
 
 
@@ -69,7 +70,8 @@ button {
   align-items: center;
   padding: 5px 20px;
   position: relative;
-  border-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .logo {

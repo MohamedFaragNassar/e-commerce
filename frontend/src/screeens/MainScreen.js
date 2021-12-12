@@ -20,7 +20,7 @@ const Main = ()=>{
 
     let highlightedPoducts = onSlaeProducts
 
-    if(highlightedPoducts.length < 5){
+    if(highlightedPoducts?.length < 5){
         function compare( a, b ) {
             if ( a.createdAt < b.createdAt ){
               return -1;
@@ -52,7 +52,7 @@ const Main = ()=>{
            <div className="toprated">
                 {topRated&&topRated.map(prod => 
                      {return prod[1].length>0&&<div key={prod}  className="toprated" >
-                         <div className="toprated-header">{`Top Rated ${prod[0]}`}</div>
+                         <div className="toprated-header">{`Featured ${prod[0]}`}</div>
                          <div className="show-products">{prod[1].map(e => 
                             <ShowProduct product={e} key={e._id} />    
                         )}</div>

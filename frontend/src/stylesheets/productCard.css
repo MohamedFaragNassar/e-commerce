@@ -1,7 +1,7 @@
 
 .product-card{
     width:280px;
-    height: 400px;
+    height: 380px;
     padding: 5px;
     border: 2px solid #ddd;
     border-radius: 8px;
@@ -84,6 +84,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .product-name{
@@ -98,10 +99,10 @@
 }
 
 .price-review{
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   margin-top: auto;
   padding: 5px;
   height: 80px;
@@ -113,11 +114,6 @@
   width: 30%;
   margin-bottom: 10px;
   
-}
-.review{
-  width: 60%;
-  margin-left: 50px;
-  margin-bottom: 15px;
 }
 
 

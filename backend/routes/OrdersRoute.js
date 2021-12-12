@@ -5,6 +5,9 @@ const router = express.Router()
 const Order = require("../models/OrderModel")
 const Shipping = require("../models/ShippingModel")
 const User = require("../models/UserModel")
+const stripe = require("stripe")("sk_test_51K5lTIESHV2Ml2kkGTBRtDWD5lMjI0SOrFUjvpJhUuaoDCYYFxA5RyvkvCkuPKRKgLBuHHomsD1Yd1np1M2KPsc200Pyk1ijfh")
+
+
 
 router.post("/add", isAuth,async(req,res)=>{
     const user = req.user
@@ -133,6 +136,56 @@ router.patch("/deliver",isAuth,isAdmin,async(req,res)=>{
         console.log(error)
         res.status(500).send(err)
     }
+})
+
+router.post("/pay",isAuth,async(req,res)=>{
+    const {id} = req.body
+    console.log("payyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+    try{
+        const order = await Order.findById(id)
+        if(order.isPaid){
+            res.status(400).send("We recieved the payments of this order")
+        }
+        order.isPaid = true
+        const updatedOrder = await order.save()
+        if(updatedOrder){
+            console.log("order payed")
+            res.send("success")
+        }
+    }catch(err){
+        console.log(error)
+        res.status(500).send(err)
+    }
+})
+
+
+const calculateOrderAmount = (order) => {
+    console.log(order)
+    return 1400;
+  
+  };
+
+router.post("/payment/stripe",isAuth,async(req,res) => {
+    const { id } = req.body;
+    const order = await Order.findById(id)
+    const total = order.totalPrice * 100
+    console.log(id)
+    console.log(total)
+    try{
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: total ,
+            currency: "usd",
+            automatic_payment_methods: {
+                enabled: true,
+            },
+        });
+
+        res.send({
+            clientSecret: paymentIntent.client_secret,
+        });
+   }catch(err){
+       console.log(err)
+   }
 })
 
 

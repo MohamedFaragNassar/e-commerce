@@ -22,8 +22,6 @@ router.get("/",isAuth,isAdmin,async(req,res)=>{
 router.post("/signin", async (req,res)=>{
     const {email, password} = req.body;     
     try{
-
-   
         const signedUser = await User.findOne({email})
         if(signedUser){
             

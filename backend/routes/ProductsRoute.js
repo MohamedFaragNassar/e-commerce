@@ -257,10 +257,7 @@ router.post("/add/:model",isAuth,isAdmin, async (req,res)=>{
         }
         try{
             const newProd = await prod.save()
-            console.log(newProd)
-            if(newProd){
-                res.send("success")
-            }
+            res.json({product:newProd})
         }catch(error){
             console.log(error)
             res.status(500).send("error in adding new product")
@@ -301,7 +298,7 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
     let prod
     try{
     if(model==="mobile"){
-            prod = await Mobile.findByIdAndUpdate(id,{
+            await Mobile.findByIdAndUpdate(id,{
                 productName: req.body.productName,
                 manufacturer: req.body.manufacturer,
                 category: req.body.category,
@@ -315,8 +312,9 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
                 discription: req.body.discription,
                 
             },{useFindAndModify:false})
+            prod = await Mobile.findById(id)
     }else if(model === "laptops"){
-        prod = await Laptop.findByIdAndUpdate(id,{
+        await Laptop.findByIdAndUpdate(id,{
             productName: req.body.productName,
             manufacturer: req.body.manufacturer,
             category: req.body.category,
@@ -331,9 +329,11 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
             discription: req.body.discription,
             
         },{useFindAndModify:false})
+        prod = await Laptop.findById(id)
+
        
     }else{
-        prod = await Product.findByIdAndUpdate(id,{
+        await Product.findByIdAndUpdate(id,{
             productName: req.body.productName,
             manufacturer: req.body.manufacturer,
             category: req.body.category,
@@ -342,10 +342,10 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
             specifications: req.body.specifications,
             discription: req.body.discription,
         },{useFindAndModify:false})
+        prod = await Product.findById(id)
+
     }
-    
-   
-        res.send('success')
+        res.json({product:prod})
         console.log("product updated")
     
     }catch(err){

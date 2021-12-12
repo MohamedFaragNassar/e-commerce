@@ -5,17 +5,58 @@ import {PayPalButton} from "react-paypal-button-v2"
 import Spinner from '../components/Spinner'
 import Status from '../components/Status'
 import AdressCard from '../components/profile/AdressCard'
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import StripeCheckout from "../components/StripeCheckout" 
+import Axios from "axios";
+
+
+const stripePromise = loadStripe("pk_test_51K5lTIESHV2Ml2kk6ZUFCfKOtkJBv5KCVkxZHH4VGhCBJU8D1fxTlYVb4AyGmOoV2rhDgNljs1G7b7aKS2KHdpDV00N2ZTil7C");
+
+
+
 const OrderDetails = (props)=>{
     
     const dispatch = useDispatch()
     const {loading,error,order} = useSelector(state => state.orderDetails)
     const [paypalButton, setPaypalButton] = useState(false)
+    const [clientSecret, setClientSecret] = useState("");
+    const {userData} = useSelector(state => state.userSignIn)
+    const id = props.match.params.id
     useEffect(() => {
         
-        dispatch(getOrderDetails(props.match.params.id))
-        
+        dispatch(getOrderDetails(id))
+       
     }, [dispatch])
 
+
+    console.log(id)
+
+    const getClientSecret = async() =>{
+       try{
+            const {data} = await Axios.post("/api/orders/payment/stripe",{id},{
+                headers:{
+                    Authorization: `Bearer ${userData.token}`,
+                }
+            }) 
+            setClientSecret(data.clientSecret)
+       }catch(err){
+           console.log(err)
+       }
+    }
+
+    useEffect(() => {
+        getClientSecret()
+    }, []);
+
+    const appearance = {
+        theme: 'stripe',
+    };
+    
+    const options = {
+        clientSecret,
+        appearance,
+    };
 
     const addPayPalScript = async () => {
         const script = document.createElement('script')
@@ -37,19 +78,21 @@ const OrderDetails = (props)=>{
         console.log(error)
         console.log("errrrrrrrrrrrrrrrrrrrrrrrrrrrr")
 
-    }
+    } 
 
-    if(order){
-       if(! order.isPaid){
-            if (!window.paypal) {
-                addPayPalScript()
-            } else {
-              //  setPaypalButton(true)
-            }
-        }
+    if(order?.payment === "paypal"){
+        if(order){
+            if(! order.isPaid){
+                 if (!window.paypal) {
+                     addPayPalScript()
+                 } else {
+                   //  setPaypalButton(true)
+                 }
+             }
+         }
     }
-   
-
+    
+console.log(order)
     return <>
      {loading ? <Spinner/> : error ? <Status isOpen="true" status="fail" size="big"
                                         message="Somthing went wrong,please try again" /> 
@@ -78,8 +121,14 @@ const OrderDetails = (props)=>{
                         </tr>
                         </tbody>
                     </table>
-                    {paypalButton ? <PayPalButton amount={order.totalPrice} onError={handlePaymentError}
-                     onSuccess={handlePaymentSuccess}/> : <div>loading...</div>}
+                     {order?.payment == "paypal" ?
+                     paypalButton ? <PayPalButton amount={order.totalPrice} onError={handlePaymentError}
+                     onSuccess={handlePaymentSuccess}/> : <div>loading...</div>:
+                    clientSecret && (
+                        <Elements options={options} stripe={stripePromise}>
+                            <StripeCheckout id={id} />
+                        </Elements>
+                    )}
                 </div>: <></>}
                 <div className="order-items">
                     <div className="order-payment">

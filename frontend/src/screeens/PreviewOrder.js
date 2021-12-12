@@ -23,7 +23,7 @@ const Preview = () =>{
     
     const handleMakeOrder = (order) =>{
         dispatch(makeOrder(order))
-        }
+    }
 
       if(initialOrder){  
         return<>

@@ -18,13 +18,13 @@ const OrderScreen = ()=>{
     const [payment, setPayment] = useState()
     const [err,setErr] = useState()
     const dispatch = useDispatch()
-
-   
+    
+    const defaultShipping = shippingInfo?.find(item => item.isDefault)
+    
    const history = useHistory()
-
-   const handleDelete = (id) =>{
-       dispatch(removeFromCart(id))
-   }
+    const handleDelete = (id) =>{
+        dispatch(removeFromCart(id))
+    }
     useEffect(() => {
         if(!userData){
             history.push("/signin/order")
@@ -38,6 +38,11 @@ const OrderScreen = ()=>{
             dispatch(getShipping())
         }
         setErr(null)
+
+        if(defaultShipping){
+            setShipping(defaultShipping)
+        }
+
     }, [cartItems,shippingInfo])
     
    const handleCount = (id,qty) =>{
@@ -54,6 +59,7 @@ const OrderScreen = ()=>{
            
         }
     }
+   
 
     return <>
 
@@ -62,11 +68,13 @@ const OrderScreen = ()=>{
                 <div className="total-price">Total Items price : $ {totalPrice}</div>
                 <div className="shipping">
                     <span>Shipping Location : </span>
-                    <select required onChange={(e)=> setShipping(e.target.value)} >
+                    <select required onChange={(e)=> setShipping(e.target.value)} 
+                    defaultValue={defaultShipping  ? defaultShipping._id : ""} >
                         <option value=""> -- select a shipping location -- </option>
                         {shippingInfo.map(shipping =>
                             <option key={shipping._id} value={shipping._id} >{shipping.name}</option>
                             )}
+                            
                     </select>
             </div>
             <div className="payment">
@@ -74,6 +82,7 @@ const OrderScreen = ()=>{
                     <select required onChange={(e)=> setPayment(e.target.value)} >
                         <option value=""> -- select a payment method -- </option>
                         <option value="paypal">Paypal</option>
+                        <option value="stripe">Stripe</option>
                     </select>
             </div>
             <button onClick={()=>hadleContinue({
