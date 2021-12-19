@@ -32,6 +32,7 @@ const RegisterScreen = ()=>{
    }, [user])
 
     const handleRegister = (e) =>{
+        const form = document.querySelector(".register-form")
         if(email && password){
             e.preventDefault()
             if(password != confirmPassword){
@@ -39,7 +40,7 @@ const RegisterScreen = ()=>{
                 setTimeout(()=>{
                     dispatch({type:CLEAR_REGISTER})
                 },5000)
-                e.target.reset()
+                form.reset()
             }else{
                dispatch(registerUser({
                     firstName,
@@ -47,7 +48,7 @@ const RegisterScreen = ()=>{
                     email,
                     password
                 })) 
-                document.querySelector(".register-form").reset()
+                form.reset()
             }
             
         }

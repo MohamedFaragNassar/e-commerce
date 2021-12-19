@@ -43,21 +43,23 @@ const ShowWishlist = ()=>{
             <ul>
                 {wishlistProducts.map(product => 
                     <li key={product._id}>
-                        <img className="side-item-img" src={`../${product.mainImage}`} />
-                        <div className="side-items-body">
-                            <div>
-                                <div className="side-item-name" >{product.productName}</div>
-                                <button onClick={()=>handleDelete(product._id)} className="delete-btn" >x</button>
-                            </div>
-                            <div className="lower-sec">
+                     <div className="cart-item-container"><img className="side-item-img" src={`${product.mainImage}`} /></div>
+                     <div className="side-items-body">
+                         <div>
+                             <div className="side-item-name turncate" >{product.productName}</div>
+                             <button onClick={()=>handleDelete(product._id)} className="delete-btn" >
+                                 <i className="fas fa-trash-alt icon-color"></i>
+                             </button>
+                         </div>
+                         <div className="lower-sec">
                                 <div className="side-item-price" >${product.price}</div>
                                 <button className="side-item-cart"  onClick={()=> addProductToCart(product)} >
-                                    <img src="./assets/cart.svg" />
+                                    <i style={{fontSize:20+"px"}} className="fas fa-shopping-cart icon-color"></i>
                                 </button>
-                            </div>
-                            
-                        </div>
-                    </li>
+                         </div>
+                         
+                     </div>
+                 </li>
                 )} 
             </ul>
             {loading ? <Spinner /> :<button className="clear-wishlist" onClick={()=> handleClear()} >Clear Wishlist</button>}

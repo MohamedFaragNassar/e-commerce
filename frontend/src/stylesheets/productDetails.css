@@ -52,14 +52,14 @@
   background: #f4f4f4;
 }
 .other-images img {
-  width: 100px;
-  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
   margin: 0 10px;
 }
 
 .specs {
   width: 50%;
-  height: 520px;
+  height: 550px;
   padding: 0 20px;
   position: relative;
   display: flex;
@@ -84,20 +84,26 @@
 
 .specs ul li {
   display: flex;
-  padding: 20px;
-  width: 60%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  min-width: 70%;
+  max-width: 80%;
 }
 
 .specs ul li div {
-  position: absolute;
-  left: 200px;
   font-size: 15px;
   font-weight: 600;
+  width: 50%;
+  word-wrap: break-word;
 }
 
 .specs ul li span {
   font-size: 15px;
   font-weight: 600;
+  width: 50%;
+  word-wrap: break-word;
+
 }
 
 .specs-btn-price div {
@@ -112,11 +118,8 @@
 }
 
 .specs-btn-price button {
-  background: transparent;
-  border: 1px solid #008891;
   border-radius: 10px;
   margin-left: 50px;
-  background: #00587a;
   color: white;
   font-size: 20px;
   font-weight: 500;
@@ -124,9 +127,7 @@
   text-align: center;
 }
 
-.specs-btn-price button:hover {
-  background: #008891;
-}
+
 .specs-btn-price button i {
   margin-right: 10px;
 }
@@ -162,6 +163,11 @@
   padding: 20px;
   font-size: 15px;
   font-weight: 700;
+  width: fit-content;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .product-discr-body {
@@ -338,6 +344,12 @@
   font-weight: 500;
   word-wrap: break-word;
   width: 90%;
+}
+
+.review-stars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .review-stars .stars ul i {

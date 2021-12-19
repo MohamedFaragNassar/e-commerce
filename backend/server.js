@@ -10,15 +10,10 @@ const QuestionsRoute = require("./routes/QuestionsRoute");
 const { urlencoded } = require("express");
 const bodyParser = require("body-parser");
 const cron = require("node-cron")
-const Mobile = require("./models/MobileModel")
-const Laptop = require("./models/LaptopModel")
-const Product = require("./models/ProductsModel");
-const mobile = require("./models/MobileModel");
-const path = require("path")
 
-//const mongoDB_URl = "mongodb://127.0.0.1:27017/e-commerce";
-const mongoDB_URl = "mongodb+srv://mnassar:nassar5050@tu-blogs.7sokl.mongodb.net/eshop?retryWrites=true&w=majority";
-//const port = process.env.port || 5000;
+const path = require("path")
+require("dotenv").config()
+
 const app = express("");
 
     
@@ -74,7 +69,7 @@ app.get("*",(req,res)=>{
 })
 }
       
-mongoose.connect(mongoDB_URl,{useNewUrlParser:true,useUnifiedTopology:true,useCreateIndex:true},) 
+mongoose.connect(process.env.MONGODB_URL,{useNewUrlParser:true,useUnifiedTopology:true,useCreateIndex:true},) 
         .then(app.listen(process.env.PORT || 5000,()=>{console.log("server connected")}))
         .catch(err => console.log(err))
 

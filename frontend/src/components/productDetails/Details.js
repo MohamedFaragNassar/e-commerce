@@ -85,7 +85,10 @@ const MobileDetails = ({product}) =>{
                      </div> :null}
                <div className="specs-btn-price">
                    <div >${ product.onSale? product.sale.salePrice : product.price}</div>
-                   <button onClick={()=> addProductToCart(product)} ><i className="fas fa-cart-plus"></i>Add To Cart</button>
+                   <button onClick={()=> addProductToCart(product)} className="btn" >
+                       <i className="fas fa-cart-plus"></i>
+                       Add To Cart
+                    </button>
                </div>
                
            </div> 

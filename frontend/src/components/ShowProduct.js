@@ -52,7 +52,7 @@ const ShowProduct = ({product})=>{
     return <>
         <div onMouseLeave={handleHideWhishlist} 
              onMouseEnter={(e)=>handleShowWhishlist(e)} className="product-card">
-            <Link to={`/product/${product._id}`}><img src={product.mainImage} alt = "product"/></Link>
+            <Link className="image-link" to={`/product/${product._id}`}><img src={product.mainImage} alt = "product"/></Link>
             <button onClick={()=> addProductToCart(product)} className="add-to-cart">
                 <img src="../assets/cart.svg" />
                 <span>Add To Cart</span>
@@ -65,8 +65,10 @@ const ShowProduct = ({product})=>{
             <div className = "product-card-body">
                 <Link to ={`/product/${product._id}`} className="product-name" >{product.productName}</Link>
                 <div className="price-review">
-                   {product.onSale? <div className="old" >${product.price}</div>:null}
-                    <div className="product-price" >${ product.onSale? product.sale.salePrice : product.price}</div>
+                    <div className="card-prices">
+                        {product.onSale? <div className="old" >${product.price}</div>:null}
+                        <div className="product-price" >${ product.onSale? product.sale.salePrice : product.price}</div>
+                    </div>
                     <div className="review"><Review value = {product.rating} color="#ffe05d" size={20} /></div>
                 </div>
                 

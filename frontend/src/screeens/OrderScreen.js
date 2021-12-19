@@ -18,13 +18,13 @@ const OrderScreen = ()=>{
     const [payment, setPayment] = useState()
     const [err,setErr] = useState()
     const dispatch = useDispatch()
-
-   
+    
+    const defaultShipping = shippingInfo?.find(item => item.isDefault)
+    
    const history = useHistory()
-
-   const handleDelete = (id) =>{
-       dispatch(removeFromCart(id))
-   }
+    const handleDelete = (id) =>{
+        dispatch(removeFromCart(id))
+    }
     useEffect(() => {
         if(!userData){
             history.push("/signin/order")
@@ -38,6 +38,11 @@ const OrderScreen = ()=>{
             dispatch(getShipping())
         }
         setErr(null)
+
+        if(defaultShipping){
+            setShipping(defaultShipping)
+        }
+
     }, [cartItems,shippingInfo])
     
    const handleCount = (id,qty) =>{
@@ -54,6 +59,7 @@ const OrderScreen = ()=>{
            
         }
     }
+   
 
     return <>
 
@@ -62,11 +68,13 @@ const OrderScreen = ()=>{
                 <div className="total-price">Total Items price : $ {totalPrice}</div>
                 <div className="shipping">
                     <span>Shipping Location : </span>
-                    <select required onChange={(e)=> setShipping(e.target.value)} >
+                    <select required onChange={(e)=> setShipping(e.target.value)} 
+                    defaultValue={defaultShipping  ? defaultShipping._id : ""} >
                         <option value=""> -- select a shipping location -- </option>
                         {shippingInfo.map(shipping =>
                             <option key={shipping._id} value={shipping._id} >{shipping.name}</option>
                             )}
+                            
                     </select>
             </div>
             <div className="payment">
@@ -74,6 +82,7 @@ const OrderScreen = ()=>{
                     <select required onChange={(e)=> setPayment(e.target.value)} >
                         <option value=""> -- select a payment method -- </option>
                         <option value="paypal">Paypal</option>
+                        <option value="stripe">Stripe</option>
                     </select>
             </div>
             <button onClick={()=>hadleContinue({
@@ -81,7 +90,7 @@ const OrderScreen = ()=>{
                     shipping,
                     payment,
                     itemsPrice:totalPrice,
-            })} className="continue">Continue</button>
+            })} className="continue btn">Continue</button>
             {err&&<Status isOpen={true} message={err} size="small" status="fail" />}
         </div>:<div className="order-fail" >
             <Status isOpen={true} status="fail" size="small" message="You should have at least one shipping location to continue " />
@@ -92,9 +101,9 @@ const OrderScreen = ()=>{
             <h3>Order Items</h3>
             <ul>
                 {cartItems.map(item =>
-                    <li key={item.name} id="order-item">
-                        <img src={item.image} />
-                        <span className="order-item-price">{item.name}</span>
+                    <li key={item.name} className="order-item">
+                        <div className="order-item-img-container"><img src={item.image} /></div>
+                        <span className="order-item-name turncate2">{item.name}</span>
                         <span className="order-item-qty" >${item.onSlae?item.sale.salePrice:item.price}</span>
                         <select className="order-item-price" onChange={(e)=> handleCount(item.product,e.target.value)} defaultValue={item.qty} >
                             {[...Array(item.amount).keys()].map(x => 

@@ -4,9 +4,65 @@
   
 }
 
+.order-data{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  height: 250px;
+}
+
+.order-payment{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.order-payment div{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.data-title{
+  width: 50%;
+}
+
+
+.order-shipping {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+.ship-loc-title{
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+#order-item,.order-item{
+  height: 60px;
+}
+
+.order-item-img-container{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .order-items img {
-  width: 100px;
-  height: 50px;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
 }
 
 .order-items {
@@ -15,11 +71,13 @@
   height: max-content;
   margin-left: auto;
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 3px 5px 0 rgba(0, 0, 0, 0.07);
-  background: #eeeeee;
+  background: white;
   padding: 20px;
   border-radius: 5px;
 }
-
+.order-items ul{
+  margin-top: 25px;
+}
 .order-items ul li {
   margin-bottom: 20px;
   padding: 5px 10px;
@@ -28,9 +86,10 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 1px 0 #61bec5;
   border-radius: 5px;
   border-top: 2px solid #008891;
+  
   background: white;
 }
 
@@ -46,6 +105,10 @@
   text-align: center;
   border: 1px solid #ddd;
   background: transparent;
+}
+
+.order-items select:focus{
+  border: 1px solid #61bec5;
 }
 
 .shipping-select {
@@ -69,6 +132,17 @@
   margin-right: auto;
 }
 
+.shipping select, .payment select{
+  background: white;
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+}
+
+.shipping select:focus, .payment select:focus{
+  border: 1px solid #61bec5;
+  
+}
+
 .shipping,
 .payment {
   width: 100%;
@@ -84,7 +158,6 @@
 .continue {
   width: 70%;
   padding: 15px;
-  background: #00587a;
   color: white;
   border-style: none;
   border-radius: 5px;
@@ -104,7 +177,7 @@
 
 }
 .order-item-price{
-  width: 30%;
+  width: 20%;
   text-align: left;
 }
 .order-item-name{
@@ -186,35 +259,6 @@
   text-align: center;
 }
 
-.order-payment {
-  width: max-content;
-  margin: auto;
-  margin-bottom: 0 auto 25px auto;
-}
-
-.order-payment span,
-.order-payment div {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.order-payment div {
-  padding: 10px;
-  margin-top: 20px;
-  border: 1px solid #00587a;
-  color: red;
-  width: fit-content;
-}
-
-.order-shipping {
-  margin-bottom: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.order-shipping h3{
-  margin: 15px 0;
-}
 
 
 .manage-orders td {

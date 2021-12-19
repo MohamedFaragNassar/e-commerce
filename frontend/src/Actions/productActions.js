@@ -11,7 +11,7 @@ import {LIST_PRODUCTS_FAIL,LIST_PRODUCTS_REQUEST,LIST_PRODUCTS_SUCCESS,ADD_PRODU
 DELETE_SALE_SUCCESS,DELETE_SALE_REQUEST,DELETE_SALE_FAIL,CLEAR_DELETE_SALE,
 GET_ALL_PRODUCTS_FAIL,GET_ALL_PRODUCTS_REQUEST,GET_ALL_PRODUCTS_SUCCESS,
 GET_REVIEWS_FAIL,GET_REVIEWS_REQUEST,GET_REVIEWS_SUCCESS,CLEAR_REVIEWS,
-DELETE_COMMENT_FAIL,DELETE_COMMENT_REQUEST,DELETE_COMMENT_SUCCESS} from "../Constants/productConstants"
+DELETE_COMMENT_FAIL,DELETE_COMMENT_REQUEST,DELETE_COMMENT_SUCCESS, ADD_SALE, DELETE_SALE} from "../Constants/productConstants"
 
 
 
@@ -47,10 +47,9 @@ const AddProducts = (product,model) => async(dispatch,getState) => {
             Authorization: `Bearer ${userData.token}`,
             }
         })
-        dispatch({type:ADD_PRODUCTS_SUCCESS, payload:data})
-        console.log(data)
-        if(data == "success"){
-          dispatch({type:ADD_PRODUCT, payload:product})
+        dispatch({type:ADD_PRODUCTS_SUCCESS, payload:"success"})
+        if(data.product){
+          dispatch({type:ADD_PRODUCT, payload:data.product})
         }
         setTimeout(()=>{
           dispatch({type:CLEAR_ADD_PRODUCT})
@@ -109,7 +108,7 @@ const updateProduct = (model,id,product) => async(dispatch,getState)=>{
           }
       })
       dispatch({type:UPDATE_PRODUCTS_SUCCESS, payload:data})
-      dispatch({type:UPDATE_PRODUCT,payload:{id,product}})
+      dispatch({type:UPDATE_PRODUCT,payload:data.product})
     }catch(error){
     dispatch({type:UPDATE_PRODUCTS_FAIL,payload:error})
   }
@@ -195,6 +194,7 @@ const addSale = (sale) => async(dispatch,getState)=>{
           }
       })
       dispatch({type:ADD_SALE_SUCCESS,payload:data})
+      dispatch({type:ADD_SALE,payload:sale})
       setTimeout(()=>{
         dispatch({type:CLEAR_ADD_SALE})
       },2000)
@@ -217,6 +217,7 @@ const deleteSale = (info) => async(dispatch,getState)=>{
           }
       })
       dispatch({type:DELETE_SALE_SUCCESS,payload:data})
+      dispatch({type:DELETE_SALE,payload:info})
       setTimeout(()=>{
         dispatch({type:CLEAR_DELETE_SALE})
       },2000)

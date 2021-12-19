@@ -1,6 +1,4 @@
 const jwt = require("jsonwebtoken")
-const  config =  require("./config")
-
 
 const getToken = (user) =>{
    return jwt.sign({
@@ -9,7 +7,7 @@ const getToken = (user) =>{
         lastName: user.lastName,
         password: user.password,
         isAdmin : user.isAdmin
-    }, config.JWT_SECRET,{
+    }, process.env.JWT_SECRET,{
         expiresIn: "24h"
     })
 }
@@ -22,7 +20,7 @@ const isAuth = (req,res,next)=>{
     }
     
     if(token){
-            jwt.verify(token, config.JWT_SECRET,(err, decodedToken)=>{
+            jwt.verify(token, process.env.JWT_SECRET,(err, decodedToken)=>{
             if(err){
                 res.status(401).send({message:"Invalid Token"})
             }

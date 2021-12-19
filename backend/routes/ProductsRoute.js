@@ -7,6 +7,7 @@ const Review =  require("../models/Review");
 const fs = require("fs")
 const {isAuth, isAdmin} = require("../Authentication");
 const e = require("express");
+const laptop = require("../models/LaptopModel");
 
 
 const router = express.Router();
@@ -91,7 +92,7 @@ router.get("/main", async (req,res)=>{
     
     const mobileProducts = await Mobile.find().sort([["rating",-1]]).limit(8)
     const laptopProducts = await Laptop.find().sort([["rating",-1]]).limit(8)
-    const pcProducts = await Product.find({category:"pc"}).sort([["rating",-1]]).limit(8)
+    const pcProducts = await Product.find({category:"pc hardware"}).sort([["rating",-1]]).limit(8)
     const homeProducts = await Product.find({category:"home devices"}).sort([["rating",-1]]).limit(8)
     const other = await Product.find({category:"other"}).sort([["rating",-1]]).limit(8)
     if(mobileProducts && laptopProducts){
@@ -256,10 +257,7 @@ router.post("/add/:model",isAuth,isAdmin, async (req,res)=>{
         }
         try{
             const newProd = await prod.save()
-            console.log(newProd)
-            if(newProd){
-                res.send("success")
-            }
+            res.json({product:newProd})
         }catch(error){
             console.log(error)
             res.status(500).send("error in adding new product")
@@ -300,7 +298,7 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
     let prod
     try{
     if(model==="mobile"){
-            prod = await Mobile.findByIdAndUpdate(id,{
+            await Mobile.findByIdAndUpdate(id,{
                 productName: req.body.productName,
                 manufacturer: req.body.manufacturer,
                 category: req.body.category,
@@ -314,8 +312,9 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
                 discription: req.body.discription,
                 
             },{useFindAndModify:false})
+            prod = await Mobile.findById(id)
     }else if(model === "laptops"){
-        prod = await Laptop.findByIdAndUpdate(id,{
+        await Laptop.findByIdAndUpdate(id,{
             productName: req.body.productName,
             manufacturer: req.body.manufacturer,
             category: req.body.category,
@@ -330,9 +329,11 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
             discription: req.body.discription,
             
         },{useFindAndModify:false})
+        prod = await Laptop.findById(id)
+
        
     }else{
-        prod = await Product.findByIdAndUpdate(id,{
+        await Product.findByIdAndUpdate(id,{
             productName: req.body.productName,
             manufacturer: req.body.manufacturer,
             category: req.body.category,
@@ -340,13 +341,11 @@ router.put("/edit/:model/:id",isAuth,isAdmin,async(req,res)=>{
             price: Number(req.body.price),
             specifications: req.body.specifications,
             discription: req.body.discription,
-            mainImage: req.body.image,
-            images: [...req.body.images],
         },{useFindAndModify:false})
+        prod = await Product.findById(id)
+
     }
-    
-   
-        res.send('success')
+        res.json({product:prod})
         console.log("product updated")
     
     }catch(err){
@@ -406,6 +405,56 @@ router.delete("/review/:id",isAuth,async(req,res)=>{
         }else{
             res.status(401).send("Not Authorized action")
         }
+    }catch(err){
+        console.log(err)
+        res.status(500).send(err)
+    }
+})
+
+router.patch("/sale",isAuth,isAdmin,async (req,res) => {
+    const {id,category,salePercentage,endDate} = req.body
+    try{
+        let product
+        if(category == "mobile"){
+            product = await Mobile.findById(id)
+        }else if(category == "laptops"){
+            product = await laptop.findById(id)
+        }else{
+            product = await Product.findById(id)
+        }
+        
+        product.onSale = true
+        product.sale = {
+            salePercentage:salePercentage,
+            salePrice: product.price - (product.price * (salePercentage/100)) ,
+            endDate:endDate,
+            }
+        const updatedProduct = product.save()
+        res.send(updatedProduct)
+        
+    }catch(err){
+        console.log(err)
+        res.status(500).send(err)
+    }
+})
+
+router.patch("/sale/delete",isAuth,isAdmin,async (req,res) => {
+    const {id,category} = req.body
+    try{
+        let product
+        if(category == "mobile"){
+            product = await Mobile.findById(id)
+        }else if(category == "laptops"){
+            product = await laptop.findById(id)
+        }else{
+            product = await Product.findById(id)
+        }
+
+        product.onSale = false;
+        product.sale = null
+        const updatedProduct = product.save()
+        res.send(updatedProduct)
+        
     }catch(err){
         console.log(err)
         res.status(500).send(err)

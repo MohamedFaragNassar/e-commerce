@@ -1,39 +1,48 @@
 
 .product-card{
+    min-width:280px;
     width:280px;
-    height: 400px;
+    height: 380px;
     padding: 5px;
     border: 2px solid #ddd;
     border-radius: 8px;
     position: relative;
     overflow: hidden;
     background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.product-card .image-link{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-card img{
-    width: 100%;
-    height: 65%;
-    margin-bottom: 25px;
-    
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .add-to-cart{
   width: 70%;
   padding: 5px;
   height: 40px;
-  margin: auto;
+  margin: 10px auto;
   display: flex;
   justify-content:center;
   align-items: center;
   border-radius: 5px;
   border-style: none;
-  position: absolute;
-  bottom: 30%;
-  left: 40px;
   background: white;
   font-size: 15px;
   font-weight: 500;
   border: 1px solid #ddd;
+  
   
 }
 
@@ -76,35 +85,35 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .product-name{
-    font-size: 25px;
-    font-weight: bold;
-    
+    font-size: 20px;
+    font-weight: 700;
+    width: 90%;
+    text-align: center;
+    margin-bottom: 0 auto 15px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .price-review{
-  width: 100%;
-  height: 80px;
+  width: 95%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   margin-top: auto;
   padding: 5px;
+  height: 80px;
 }
 
 .product-price{
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
-  width: 40%;
   margin-bottom: 10px;
   
-}
-.review{
-  width: 60%;
-  margin-left: 50px;
-  margin-bottom: 15px;
 }
 
 
@@ -125,11 +134,15 @@
 }
 
 .old{
-  position: absolute;
-  bottom: 50px;
-  left: 20px;
   text-decoration: line-through 2px #a20a0a;
   font-size: 20px;
   font-weight: 600;
   opacity: .6;
+  
+}
+
+.card-prices{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

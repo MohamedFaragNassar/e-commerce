@@ -6,32 +6,32 @@ const AdressCard = ({location,type}) => {
     const dispatch = useDispatch()
     
     const handleDeleteAdress = ()=>{
-        dispatch(deleteShipping(location._id))
+        dispatch(deleteShipping(location?._id))
     }
 
     const handleUpdateAdress = () => {
-        dispatch(makeDefault(location._id))
+        dispatch(makeDefault(location?._id))
     }
 
     return <>
-        <div className="address-card" style={location.isDefault?{ paddingTop:30+"px" }:null}>
-        {location.isDefault&&<span className="default">Default Address</span>}
-        <h3>{location.name}</h3>
+        <div className="address-card" style={location?.isDefault?{ paddingTop:30+"px" }:null}>
+        {location?.isDefault&&<span className="default">Default Address</span>}
+        <h3>{location?.name}</h3>
         <div>
             <span>Country : </span>
-            <span>{location.country}</span>
+            <span>{location?.country}</span>
         </div>
         <div>
             <span>City : </span>
-            <span>{location.city}</span>
+            <span>{location?.city}</span>
         </div>
         <div>
             <span>Postal code : </span>
-            <span>{location.postalcode}</span>
+            <span>{location?.postalcode}</span>
         </div>
         <div>
             <span>Address : </span>
-            <span>{location.address}</span>
+            <span>{location?.address}</span>
         </div>
         {type!="show"&&<div className="btns">
             <button onClick={()=>handleDeleteAdress()}>Remove</button>

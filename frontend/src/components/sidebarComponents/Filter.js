@@ -22,7 +22,7 @@ const Filter = ()=>{
                             <option onClickCapture={()=>handleChoice("mobile")} >mobile</option>
                             <option onClickCapture={()=>handleChoice("laptops")}>laptops</option>
                             <option onClickCapture={()=>handleChoice("pc hardware")}>pc hardware</option>
-                            <option onClickCapture={()=>handleChoice("home devices")}>Home devices</option>
+                            <option onClickCapture={()=>handleChoice("home devices")}>Home appliances</option>
                             <option onClickCapture={()=>handleChoice("other")}>other</option>
                         </select>
                     </div>
