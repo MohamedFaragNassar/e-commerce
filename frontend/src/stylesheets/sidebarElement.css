@@ -1,7 +1,8 @@
 .side-item-img{
-    width: 50%;
+    width: auto;
     height: 100%;
     margin-right: 10px;
+    max-width: 100%;
 }
 
 .showCart{
@@ -34,7 +35,7 @@
     max-width:fit-content;
     position: absolute;
     top: 0;
-    left: 90%;
+    left: 89%;
     font-size: 15px;
 
 }
@@ -61,12 +62,12 @@
     align-items: center;
 }
 
-.side-items-body div{
-    width: 100%;
+.side-items-body div:not(.turncate){
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 80%;
+  
 }
 
 .side-item-cart{
@@ -134,4 +135,8 @@
  .cat-options{
      width: 100%;
      margin-top: 5px;
+ }
+
+ .filter select{
+     background: white;
  }

@@ -129,7 +129,7 @@
 }
 
 .register div label {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: #1687a7;
 }
 
@@ -205,10 +205,10 @@
   justify-content: space-between;
   align-items: start;
   width: 90%;
-  margin-top: 15px;
   color: #51adcf;
   font-size: 18px;
   margin: auto;
+  margin-top: 10px;
 }
 .register-form input:not(.rigster-name input) {
   width: 95%;

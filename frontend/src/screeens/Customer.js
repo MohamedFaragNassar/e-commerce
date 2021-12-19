@@ -8,7 +8,7 @@ import UpdateProduct from "../screeens/UpdateProduct";
 import SignScreen from "./SignScreen";
 import { useSelector} from 'react-redux';
 import SignedUser from "../components/signedUser"
-import UnSignedUser from "../components/unSignedUser"
+import UnSignedUser from "../components/UnSignedUser"
 import Sidebar from "../components/sidebarComponents/Sidebar"
 import UserDetails from "../screeens/UserDetails"
 import ProtectedRoute from "../components/ProtectedRoute"
@@ -35,7 +35,7 @@ const Customer = (props) => {
    
 
     const checkSideBar = () => {
-        const width = window.screen.width > 800
+        const width = window.screen.width > 850
         const page = window.location.pathname =="/" || window.location.pathname.includes("product") 
                 || window.location.pathname.includes("filter")|| window.location.pathname.includes("category")
         
@@ -49,9 +49,8 @@ const Customer = (props) => {
 
     return <>
         <header>
-            <div className="container">
-
-                <div className="navigation">
+            {<div className="navigation">
+                <div className='container nav-body'>
                     <div className="nav-1">
                         <div className="logo">
                             <button onClick={()=>setIsOpen(true)} className="hide menu-btn">
@@ -63,29 +62,30 @@ const Customer = (props) => {
 
                         <div className="main-menu">
                             <ul>
-                                <li><Link to="/">Home</Link></li>
-                                <li className="cat" ><span to="/categories">Categories</span>
+                                <li className='main-menu-btn'><Link to="/">Home</Link></li>
+                                <li className="cat main-menu-btn" ><span to="/categories">Categories</span>
                                     <div className="items-container" >
                                         <ul className="cat-items" >
                                             <li><Link className="cat-item" to="/category/mobile">Mobiles</Link></li>
                                             <li><Link className="cat-item" to="/category/laptops">Laptops</Link></li>
-                                            <li><Link className="cat-item" to="/category/homedevices">Home Devices</Link></li>
+                                            <li><Link className="cat-item" to="/category/homedevices">Home Appliances</Link></li>
                                             <li><Link className="cat-item" to="/category/pc">Pc Hardware</Link></li>
                                             <li><Link className="cat-item" to="/category/other">Other</Link></li>
                                         </ul>
                                     </div>    
                                 </li>
-                                <li><Link to="/contact">Contact</Link></li>
+                                <li  className='main-menu-btn'><Link to="/contact">Contact</Link></li>
                             </ul>
                         </div>
-                    </div>
-                     <div className="user">
-                            {userData ? <SignedUser/> : <UnSignedUser/>}
-                    </div>
+                        </div>
+                            <div className="user">
+                                {userData ? <SignedUser/> : <UnSignedUser/>}
+                        </div>
                 </div>
-                
-
             </div>
+            }
+
+            
         </header>
         <div className="container">
                 <div className="mid-container">

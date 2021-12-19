@@ -90,7 +90,7 @@ const OrderScreen = ()=>{
                     shipping,
                     payment,
                     itemsPrice:totalPrice,
-            })} className="continue">Continue</button>
+            })} className="continue btn">Continue</button>
             {err&&<Status isOpen={true} message={err} size="small" status="fail" />}
         </div>:<div className="order-fail" >
             <Status isOpen={true} status="fail" size="small" message="You should have at least one shipping location to continue " />
@@ -101,9 +101,9 @@ const OrderScreen = ()=>{
             <h3>Order Items</h3>
             <ul>
                 {cartItems.map(item =>
-                    <li key={item.name} id="order-item">
-                        <img src={item.image} />
-                        <span className="order-item-price">{item.name}</span>
+                    <li key={item.name} className="order-item">
+                        <div className="order-item-img-container"><img src={item.image} /></div>
+                        <span className="order-item-name turncate2">{item.name}</span>
                         <span className="order-item-qty" >${item.onSlae?item.sale.salePrice:item.price}</span>
                         <select className="order-item-price" onChange={(e)=> handleCount(item.product,e.target.value)} defaultValue={item.qty} >
                             {[...Array(item.amount).keys()].map(x => 

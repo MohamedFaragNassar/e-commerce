@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import StarRating from './StarRating'
 
 
 
@@ -49,29 +50,27 @@ const ProductReviews = ({id}) => {
         dispatch(deleteComment(id))
     }
 
-    
+    const handleStarRating = (val) => {
+        setRating(val)
+    }
+
+    const checkUserReview = () => {
+        return reviews?.filter(e => e.user._id == userData.userID).length < 1
+    }
 
     useEffect(() => {
        dispatch(getProductReviews(id))
     }, [])
     return <>
         <div className="review-product">
-           {userData?<div className="add-review">
+           {userData && checkUserReview()?<div className="add-review">
                 <div className="product-discr-header review-header">Rate this product</div>
                 <form id="review-form">
                     <div>
-                        
-                        <Box component="fieldset" mb={3} borderColor="transparent">
-                            <Typography component="legend">Your Evaluation : </Typography>
-                            <Rating
-                            name="simple-controlled"
-                            onChange={(event, newValue) => {
-                                setRating(newValue);
-                            }}
-                            />
-                        </Box>       
+                       <StarRating handler={handleStarRating} value={0} />      
                     </div>
-                    <textarea onChange={(e)=>setComment(e.target.value)} placeholder="write your comment here"></textarea>
+                    <textarea onChange={(e)=>setComment(e.target.value)} 
+                    placeholder="write your comment here"></textarea>
                     {loading? <Spinner/>:<div><button onClick={(e)=>handleAddReview(e)} className="clear-wishlist">Add Review</button></div> }
                     {error?<Status isOpen="true" size="small" status="fail" message={error} />:
                     review?<Status isOpen="true" size="small" status="success" message="thank you for reviewing this product" />:null}
@@ -82,7 +81,11 @@ const ProductReviews = ({id}) => {
                 <div className="total-rating">{calcRating()}</div>
                 <div className="review-stars">
                     <Review value={calcRating()} color="#ffe05d"/>
-                    <span>{(reviews?.length > 0) ? <>({reviews.length} Reviews)</>: null}</span>
+                    <span>{(reviews?.length > 0) ? checkUserReview() ?
+                        <>({reviews.length} Reviews)</>:
+                        <span>{reviews.length > 1 ? `(you & ${reviews.length - 1 } 
+                        others Reviewed this product)`:`only you reviewed this product`}</span>: null}
+                    </span>
                 </div>
             </div>
             

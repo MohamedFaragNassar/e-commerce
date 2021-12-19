@@ -55,17 +55,19 @@ const Preview = () =>{
                          tax:Number(taxPrice),
                          shippingPrice,
                          totalPrice,
-                    })} className="continue" >Make Order</button>
+                    })} className="continue btn" >Make Order</button>
                 </div>
                 <div className="order-items">
                     <div >
                         <ul>
                             {initialOrder.orderItems.map(item =>
-                                <li key={item.name}>
-                                    <img src={item.image} />
-                                    <span className="order-item-name">{item.name}</span>
+                                <li key={item.name} className='order-item'>
+                                    <div className="order-item-img-container"><img src={item.image} /></div>
+                                    <span className="order-item-name turncate2">{item.name}</span>
                                     <span className="order-item-qty">Qty : {item.qty}</span>
-                                    <span className="order-item-price">Price : {item.price} * {item.qty} = $ {item.price * item.qty}</span>
+                                    <span className="order-item-price">
+                                        Price : $ {item.price * item.qty}
+                                    </span>
                                 </li>
                             )}
                         </ul>

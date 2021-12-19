@@ -65,8 +65,10 @@ const ShowProduct = ({product})=>{
             <div className = "product-card-body">
                 <Link to ={`/product/${product._id}`} className="product-name" >{product.productName}</Link>
                 <div className="price-review">
-                   {product.onSale? <div className="old" >${product.price}</div>:null}
-                    <div className="product-price" >${ product.onSale? product.sale.salePrice : product.price}</div>
+                    <div className="card-prices">
+                        {product.onSale? <div className="old" >${product.price}</div>:null}
+                        <div className="product-price" >${ product.onSale? product.sale.salePrice : product.price}</div>
+                    </div>
                     <div className="review"><Review value = {product.rating} color="#ffe05d" size={20} /></div>
                 </div>
                 

@@ -70,8 +70,8 @@ const OrderDetails = (props)=>{
       }
   
 
-    const handlePaymentSuccess =(paymentResult)=>{
-        console.log(paymentResult)
+    const handlePaymentSuccess =(details,data)=>{
+        console.log(details)
         console.log("payment done")
     }
     const handlePaymentError = (error)=>{
@@ -122,8 +122,11 @@ console.log(order)
                         </tbody>
                     </table>
                      {order?.payment == "paypal" ?
-                     paypalButton ? <PayPalButton amount={order.totalPrice} onError={handlePaymentError}
-                     onSuccess={handlePaymentSuccess}/> : <div>loading...</div>:
+                     paypalButton ? 
+                     <PayPalButton amount={order.totalPrice} onError={(error)=>handlePaymentError(error)}
+                      shippingPreference="NO_SHIPPING" 
+                      
+                     onSuccess={(details,data)=>handlePaymentSuccess(details,data)}/> : <div>loading...</div>:
                     clientSecret && (
                         <Elements options={options} stripe={stripePromise}>
                             <StripeCheckout id={id} />
@@ -131,22 +134,38 @@ console.log(order)
                     )}
                 </div>: <></>}
                 <div className="order-items">
-                    <div className="order-payment">
-                        <span>Payment Method : </span><span>{order.payment}</span>
-                        <div>{order.isPaid ? "The Order is Paid":"The Order is not Paid"}</div>
-                    </div>
-                    <div className="order-shipping">
-                        <h3>Shipping Location :</h3>
-                        <AdressCard location={order?.shipping} type="show" />
+                    <div className="order-data">
+                        <div className="order-payment">
+                            <div>
+                                <span className="data-title">Order ID : </span>
+                                <span>{order._id}</span>
+                            </div>
+                            <div>
+                                <span className="data-title">Payment Method : </span>
+                                <span>{order.payment}</span>
+                            </div>
+                            <div>
+                                <span className="data-title">Order Status : </span>
+                                <span>{order.isPaid ? "The Order is Paid":"The Order is not Paid"}</span>
+                            </div>
+                            <div>
+                                <span className="data-title">Delivery Status : </span>
+                                <span>{order.isDelivered ? "The Order is delivered":"The Order is not delivered"}</span>
+                            </div>
+                        </div>
+                        <div className="order-shipping">
+                            <span className="ship-loc-title">Shipping Location :</span>
+                            <AdressCard location={order?.shipping} type="show" />
+                        </div>
                     </div>
                     <div >
                         <ul>
                             {order.orderItems.map(item =>
-                                <li key={item.name}>
-                                    <img src={item.image} style={{marginRight:10+"px"}} />
-                                    <span className="order-item-price">Name : {item.name}</span>
+                                <li key={item.name} className="order-item">
+                                    <div className="order-item-img-container"><img src={item.image} /></div>
+                                    <span className="order-item-name turncate2">Name : {item.name}</span>
                                     <span className="order-item-price">Qty : {item.qty}</span>
-                                    <span className="order-item-price">Price : {item.price} * {item.qty} = $ {item.price * item.qty}</span>
+                                    <span className="order-item-price">Price : $ {item.price * item.qty}</span>
                                 </li>
                             )}
                         </ul>

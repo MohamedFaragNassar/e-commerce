@@ -65,6 +65,10 @@
   cursor: pointer;
 }
 
+.search-result div:hover{
+  background: #e7e7e7;
+}
+
 .hide-search {
   display: none;
 }

@@ -28,12 +28,12 @@ const ShowCart = ()=>{
             <ul>
                 {cartItems.map(product => 
                     <li key={product.product}>
-                        <img className="side-item-img" src={`${product.image}`} />
+                        <div className="cart-item-container"><img className="side-item-img" src={`${product.image}`} /></div>
                         <div className="side-items-body">
                             <div>
-                                <div className="side-item-name" >{product.name}</div>
+                                <div className="side-item-name turncate" >{product.name}</div>
                                 <button onClick={()=>handleDelete(product.product)} className="delete-btn" >
-                                    <i className="fas fa-trash-alt"></i>
+                                    <i className="fas fa-trash-alt icon-color"></i>
                                 </button>
                             </div>
                             <div className="lower-sec">
@@ -44,7 +44,7 @@ const ShowCart = ()=>{
                     </li>
                 )} 
            </ul>
-           <Link to="/orders" className="clear-wishlist"  >Make Order</Link> 
+           <Link to="/orders" className="clear-wishlist btn"  >Make Order</Link> 
         </div> : null}
 
         </>

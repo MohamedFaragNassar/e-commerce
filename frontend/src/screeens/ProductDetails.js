@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import MobileDetails from "../components/productDetails/Mobile"
+import Details from "../components/productDetails/Details"
 import Spinner from "../components/Spinner"
 import Status from "../components/Status"
 import {getProductDetails} from "../Actions/productActions"
@@ -22,7 +22,7 @@ const ProductDetails = (props)=>{
             error ? <Status isOpen={true} message="Ops... Somthing went wrong when getting product details, please try again"  />:
             product ? <>
                <div className="product-details" >
-                    <MobileDetails product={product} />
+                    <Details product={product} />
                </div>
             </> : null }
      </>

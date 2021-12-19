@@ -53,9 +53,13 @@ const HighlightCard = ({products}) => {
             <div className="product-price-btn">
                 <div className="highlight-prices">
                     {products[index]?.onSale? <span className="sale" >${products[index]?.price}</span>:null}
-                    <div className="product-price" >${ products[index]?.onSale? products[index]?.sale.salePrice : products[index]?.price}</div>
+                    <div className="product-price" >
+                        ${ products[index]?.onSale? products[index]?.sale.salePrice : products[index]?.price}
+                    </div>
                 </div>
-                <button onClick={()=>addProductToCart(products[index])} type="button">buy now</button>
+                <div className='buy-btn'>
+                    <button onClick={()=>addProductToCart(products[index])} type="button">Buy Now</button>
+                </div>
             </div>
         </div>
 
