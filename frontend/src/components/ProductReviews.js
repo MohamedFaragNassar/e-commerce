@@ -55,7 +55,7 @@ const ProductReviews = ({id}) => {
     }
 
     const checkUserReview = () => {
-        return reviews?.filter(e => e.user._id == userData.userID).length < 1
+        return reviews?.filter(e => e.user._id == userData?.userID).length < 1 || false
     }
 
     useEffect(() => {
